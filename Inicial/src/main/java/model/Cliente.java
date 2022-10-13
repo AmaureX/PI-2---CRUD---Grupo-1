@@ -9,5 +9,95 @@ package model;
  * @author ciluc
  */
 public class Cliente {
+    private String Nome;
+    private String CPF;
+    private String Genero;
+    private String EstadoCivil;
+    private String Endereco;
+    private String CEP;
+    private String Bairro;
+    private String NumeroCasa;
+    private String Celular;
+    private String Email;
+
+    public String getNome() {
+        return Nome;
+    }
+
+    public void setNome(String Nome) {
+        this.Nome = Nome;
+    }
+
+    public String getCPF() {
+        return CPF;
+    }
+
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
+    }
+
+    public String getGenero() {
+        return Genero;
+    }
+
+    public void setGenero(String Genero) {
+        this.Genero = Genero;
+    }
+
+    public String getEstadoCivil() {
+        return EstadoCivil;
+    }
+
+    public void setEstadoCivil(String EstadoCivil) {
+        this.EstadoCivil = EstadoCivil;
+    }
+
+    public String getEndereco() {
+        return Endereco;
+    }
+
+    public void setEndereco(String Endereco) {
+        this.Endereco = Endereco;
+    }
+
+    public String getCEP() {
+        return CEP;
+    }
+
+    public void setCEP(String CEP) {
+        this.CEP = CEP;
+    }
+
+    public String getBairro() {
+        return Bairro;
+    }
+
+    public void setBairro(String Bairro) {
+        this.Bairro = Bairro;
+    }
+
+    public String getNumeroCasa() {
+        return NumeroCasa;
+    }
+
+    public void setNumeroCasa(String NumeroCasa) {
+        this.NumeroCasa = NumeroCasa;
+    }
+
+    public String getCelular() {
+        return Celular;
+    }
+
+    public void setCelular(String Celular) {
+        this.Celular = Celular;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
     
 }
