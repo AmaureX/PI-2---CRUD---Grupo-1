@@ -4,23 +4,92 @@ package model;
 public class Produto {
 
     private int idCod;
-    private String produto;
+    private String nome;
     private int quantidade;
-    private int pcCompra;
-    private int pcVenda;
+    private double pcCompra;
+    private double pcVenda;
     private String fornecedor;
-
+    private String marca;
+    private int lucro;
+    private String secao;
+    private double precoTotalVenda;
+    private double preçoTotalCompra;
+    private double lucroTotal;
+    private String buscaProduto;
     public Produto() {
     }
 
-    public Produto(int pIdCod, String pProduto, int pQuantidade, int pPcCompra, int pPcVenda, String pFornecedor) {
+    public Produto(int IdCod, String Nome, int Quantidade, int PcCompra, int PcVenda, String Fornecedor, String Marca, int lucro, String secao, double precoTotalVenda, double precoTotalCompra, double lucroTotal, String buscaProduto) {
 
-        this.idCod = pIdCod;
-        this.produto = pProduto;
-        this.quantidade = pQuantidade;
-        this.pcCompra = pPcCompra;
-        this.pcVenda = pPcVenda;
-        this.fornecedor = pFornecedor;
+        this.idCod = IdCod;
+        this.nome = Nome;
+        this.quantidade = Quantidade;
+        this.pcCompra = PcCompra;
+        this.pcVenda = PcVenda;
+        this.fornecedor = Fornecedor;
+        this.marca = Marca;
+        this.lucro = lucro;
+        this.secao = secao;
+        this.precoTotalVenda = precoTotalVenda;
+        this.preçoTotalCompra = precoTotalCompra;
+        this.lucroTotal = lucroTotal;
+        this.buscaProduto = buscaProduto;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public int getLucro() {
+        return lucro;
+    }
+
+    public void setLucro(int lucro) {
+        this.lucro = lucro;
+    }
+
+    public String getSecao() {
+        return secao;
+    }
+
+    public void setSecao(String secao) {
+        this.secao = secao;
+    }
+
+    public double getPrecoTotalVenda() {
+        return precoTotalVenda;
+    }
+
+    public void setPrecoTotalVenda(double precoTotalVenda) {
+        this.precoTotalVenda = precoTotalVenda;
+    }
+
+    public double getPreçoTotalCompra() {
+        return preçoTotalCompra;
+    }
+
+    public void setPreçoTotalCompra(double preçoTotalCompra) {
+        this.preçoTotalCompra = preçoTotalCompra;
+    }
+
+    public double getLucroTotal() {
+        return lucroTotal;
+    }
+
+    public void setLucroTotal(double lucroTotal) {
+        this.lucroTotal = lucroTotal;
     }
 
     public int getIdCod() {
@@ -32,11 +101,11 @@ public class Produto {
     }
 
     public String getProduto() {
-        return produto;
+        return nome;
     }
 
     public void setProduto(String produto) {
-        this.produto = produto;
+        this.nome = nome;
     }
 
     public int getQuantidade() {
@@ -47,7 +116,7 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
-    public int getPcCompra() {
+    public double getPcCompra() {
         return pcCompra;
     }
 
@@ -55,7 +124,7 @@ public class Produto {
         this.pcCompra = pcCompra;
     }
 
-    public int getPcVenda() {
+    public double getPcVenda() {
         return pcVenda;
     }
 

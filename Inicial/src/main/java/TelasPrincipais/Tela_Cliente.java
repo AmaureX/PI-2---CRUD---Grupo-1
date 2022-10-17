@@ -104,9 +104,19 @@ public class Tela_Cliente extends javax.swing.JFrame {
         bgEscolhaBusca.add(rbNome);
         rbNome.setSelected(true);
         rbNome.setText("Nome");
+        rbNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbNomeActionPerformed(evt);
+            }
+        });
 
         bgEscolhaBusca.add(rbCPF);
         rbCPF.setText("CPF");
+        rbCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbCPFActionPerformed(evt);
+            }
+        });
 
         btProcurar.setText("Procurar");
         btProcurar.addActionListener(new java.awt.event.ActionListener() {
@@ -658,6 +668,14 @@ public class Tela_Cliente extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btProcurarActionPerformed
+
+    private void rbNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbNomeActionPerformed
+
+    private void rbCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCPFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbCPFActionPerformed
 
     /**
      * @param args the command line arguments
