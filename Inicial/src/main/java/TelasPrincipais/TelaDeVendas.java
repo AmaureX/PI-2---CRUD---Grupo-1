@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Vendas;
+package TelasPrincipais;
 
 import javax.swing.JOptionPane;
 
@@ -71,10 +71,13 @@ public class TelaDeVendas extends javax.swing.JFrame {
         lblValorFinal = new javax.swing.JLabel();
         txtValorFinal = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
-        menuPrincipal = new javax.swing.JMenu();
         menuCliente = new javax.swing.JMenu();
+        mnuCliente = new javax.swing.JMenuItem();
         menuProduto = new javax.swing.JMenu();
+        mnuproduto = new javax.swing.JMenuItem();
         menuRelatorio = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -329,16 +332,43 @@ public class TelaDeVendas extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        menuPrincipal.setText("Principal");
-        jMenuBar1.add(menuPrincipal);
-
         menuCliente.setText("Cliente");
+
+        mnuCliente.setText("Tela do Cliente");
+        mnuCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuClienteActionPerformed(evt);
+            }
+        });
+        menuCliente.add(mnuCliente);
+
         jMenuBar1.add(menuCliente);
 
         menuProduto.setText("Produto");
+
+        mnuproduto.setText("Tela de Produto");
+        mnuproduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuprodutoActionPerformed(evt);
+            }
+        });
+        menuProduto.add(mnuproduto);
+
         jMenuBar1.add(menuProduto);
 
         menuRelatorio.setText("Relatório");
+
+        jMenuItem3.setText("Sintético");
+        menuRelatorio.add(jMenuItem3);
+
+        jMenuItem4.setText("Análitico");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        menuRelatorio.add(jMenuItem4);
+
         jMenuBar1.add(menuRelatorio);
 
         setJMenuBar(jMenuBar1);
@@ -434,6 +464,20 @@ public class TelaDeVendas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void mnuprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuprodutoActionPerformed
+        Tela_Produto Produto = new Tela_Produto();
+        Produto.setVisible(true);
+    }//GEN-LAST:event_mnuprodutoActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void mnuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuClienteActionPerformed
+        Tela_Cliente Cliente = new Tela_Cliente();
+        Cliente.setVisible(true);
+    }//GEN-LAST:event_mnuClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -481,6 +525,8 @@ public class TelaDeVendas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -494,9 +540,10 @@ public class TelaDeVendas extends javax.swing.JFrame {
     private javax.swing.JLabel lblValorFinal;
     private javax.swing.JLabel lblValorUnit;
     private javax.swing.JMenu menuCliente;
-    private javax.swing.JMenu menuPrincipal;
     private javax.swing.JMenu menuProduto;
     private javax.swing.JMenu menuRelatorio;
+    private javax.swing.JMenuItem mnuCliente;
+    private javax.swing.JMenuItem mnuproduto;
     private javax.swing.JTable tblItens;
     private javax.swing.JTextField txtCodProd;
     private javax.swing.JTextField txtDescricaoProd;

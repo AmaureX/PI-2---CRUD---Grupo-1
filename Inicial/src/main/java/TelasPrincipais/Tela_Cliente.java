@@ -77,10 +77,13 @@ public class Tela_Cliente extends javax.swing.JFrame {
         cbxEstadoCivil = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
+        mnuProduto = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        mnuVenda = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -192,10 +195,8 @@ public class Tela_Cliente extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tabela_Cliente);
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton1.setText("Descrição");
 
-        btNovoCadastro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btNovoCadastro.setText("Novo cadastro");
         btNovoCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,7 +204,6 @@ public class Tela_Cliente extends javax.swing.JFrame {
             }
         });
 
-        btExcluir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btExcluir.setText("Excluir");
         btExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -251,7 +251,6 @@ public class Tela_Cliente extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Dados Pessoais");
 
         lblNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -313,7 +312,6 @@ public class Tela_Cliente extends javax.swing.JFrame {
         lblEstadoCivil.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblEstadoCivil.setText("Estado Civil:");
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel12.setText("Contato");
 
         lblEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -506,16 +504,38 @@ public class Tela_Cliente extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Cadastro", CadastroCliente);
 
-        jMenu2.setText("Principal");
-        jMenuBar1.add(jMenu2);
-
         jMenu1.setText("Produto");
+
+        mnuProduto.setText("Tela de Produto");
+        mnuProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuProdutoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnuProduto);
+
         jMenuBar1.add(jMenu1);
 
         jMenu3.setText("Venda");
+
+        mnuVenda.setText("Tela de Venda ");
+        mnuVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuVendaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(mnuVenda);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Relatorio");
+
+        jMenuItem1.setText("Sintético");
+        jMenu4.add(jMenuItem1);
+
+        jMenuItem2.setText("Análitico");
+        jMenu4.add(jMenuItem2);
+
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -686,6 +706,16 @@ public class Tela_Cliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void mnuProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuProdutoActionPerformed
+        Tela_Produto Produto1 = new Tela_Produto();
+       Produto1.setVisible(true);
+    }//GEN-LAST:event_mnuProdutoActionPerformed
+
+    private void mnuVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuVendaActionPerformed
+        TelaDeVendas Venda = new TelaDeVendas();
+        Venda.setVisible(true);
+    }//GEN-LAST:event_mnuVendaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -740,10 +770,11 @@ public class Tela_Cliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JList<String> jList1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
@@ -760,6 +791,8 @@ public class Tela_Cliente extends javax.swing.JFrame {
     private javax.swing.JLabel lblGenero;
     private javax.swing.JLabel lblNcasa;
     private javax.swing.JLabel lblNome;
+    private javax.swing.JMenuItem mnuProduto;
+    private javax.swing.JMenuItem mnuVenda;
     private javax.swing.JRadioButton rbCPF;
     private javax.swing.JRadioButton rbNome;
     private javax.swing.JTextField txtBairro;
