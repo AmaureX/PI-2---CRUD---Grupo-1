@@ -4,11 +4,15 @@ import Vendas.TelaDeVendas;
 import com.sun.imageio.plugins.jpeg.JPEG;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 import jdk.nashorn.internal.ir.BreakNode;
 
 /*
@@ -46,6 +50,7 @@ public class Tela_Produto extends javax.swing.JFrame {
         lblPcTotalCompra.setForeground(Color.black);
         lblFornecedor.setForeground(Color.black);
         lblMarca.setForeground(Color.black);
+        ftfDataRecebimento.setForeground(Color.black);
 
     }
 
@@ -62,6 +67,7 @@ public class Tela_Produto extends javax.swing.JFrame {
         lblLucroTotal.setText("");
         txtMarca.setText("");
         lblPrecoTotalVenda.setText("");
+        ftfDataRecebimento.setText("");
 
     }
 
@@ -108,6 +114,8 @@ public class Tela_Produto extends javax.swing.JFrame {
         rbtCodigo = new javax.swing.JRadioButton();
         rbtNome = new javax.swing.JRadioButton();
         btnPesquisar = new javax.swing.JButton();
+        lblDataRecebimento = new javax.swing.JLabel();
+        ftfDataRecebimento = new javax.swing.JFormattedTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -162,6 +170,11 @@ public class Tela_Produto extends javax.swing.JFrame {
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
+            }
+        });
+        btnSalvar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnSalvarKeyPressed(evt);
             }
         });
 
@@ -424,6 +437,28 @@ public class Tela_Produto extends javax.swing.JFrame {
                 .addGap(0, 22, Short.MAX_VALUE))
         );
 
+        lblDataRecebimento.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        lblDataRecebimento.setText("Data recebimento:");
+
+        try {
+            ftfDataRecebimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        ftfDataRecebimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ftfDataRecebimentoActionPerformed(evt);
+            }
+        });
+        ftfDataRecebimento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ftfDataRecebimentoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ftfDataRecebimentoKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout plProdutoLayout = new javax.swing.GroupLayout(plProduto);
         plProduto.setLayout(plProdutoLayout);
         plProdutoLayout.setHorizontalGroup(
@@ -496,7 +531,11 @@ public class Tela_Produto extends javax.swing.JFrame {
                             .addGroup(plProdutoLayout.createSequentialGroup()
                                 .addComponent(lblLcrTotal)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblLucroTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(lblLucroTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(88, 88, 88)
+                                .addComponent(lblDataRecebimento)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ftfDataRecebimento, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, plProdutoLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -547,10 +586,17 @@ public class Tela_Produto extends javax.swing.JFrame {
                         .addGap(41, 41, 41)
                         .addGroup(plProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblLcrTotal)
-                            .addComponent(lblLucroTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblLucroTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, plProdutoLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(plProdutoLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(plProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblDataRecebimento)
+                            .addComponent(ftfDataRecebimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(plProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, plProdutoLayout.createSequentialGroup()
@@ -754,6 +800,12 @@ public class Tela_Produto extends javax.swing.JFrame {
             cbxFornecedor.requestFocus();
             return;
         }
+        if (ftfDataRecebimento.getText().replace("/", "").trim().equals("")) {
+            JOptionPane.showMessageDialog(this, "Digite a data de recebimento!");
+            lblDataRecebimento.setForeground(Color.red);
+            ftfDataRecebimento.requestFocus();
+            return;
+        }
 
         JOptionPane.showConfirmDialog(null, "Deseja Salvar?", "Mensagem", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
@@ -767,6 +819,7 @@ public class Tela_Produto extends javax.swing.JFrame {
         cbxFornecedor.getSelectedItem();
         txtMarca.getText();
         lblLucroTotal.getText();
+        ftfDataRecebimento.getText();
         limparTexto();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -900,7 +953,7 @@ public class Tela_Produto extends javax.swing.JFrame {
 
     private void cbxFornecedorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbxFornecedorKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            btnSalvar.requestFocus();
+            ftfDataRecebimento.requestFocus();
         }
     }//GEN-LAST:event_cbxFornecedorKeyPressed
 
@@ -987,6 +1040,39 @@ public class Tela_Produto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void ftfDataRecebimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftfDataRecebimentoActionPerformed
+
+    }//GEN-LAST:event_ftfDataRecebimentoActionPerformed
+
+    private void ftfDataRecebimentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ftfDataRecebimentoKeyTyped
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnSalvar.requestFocus();
+        }
+    }//GEN-LAST:event_ftfDataRecebimentoKeyTyped
+
+    private void ftfDataRecebimentoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ftfDataRecebimentoKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnSalvar.requestFocus();
+        }
+    }//GEN-LAST:event_ftfDataRecebimentoKeyPressed
+
+    private void btnSalvarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSalvarKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            JOptionPane.showConfirmDialog(null, "Deseja Salvar?", "Mensagem", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            lblPrecoVenda.getText();
+            lblPrecoTotalCompra.getText();
+            txtLucro.getText();
+            lblPrecoVenda.getText();
+            lblPrecoTotalCompra.getText();
+            lblPrecoTotalVenda.getText();
+            cbxSecao.getSelectedItem();
+            cbxFornecedor.getSelectedItem();
+            txtMarca.getText();
+            lblLucroTotal.getText();
+            ftfDataRecebimento.getText();
+            limparTexto();
+        }
+    }//GEN-LAST:event_btnSalvarKeyPressed
     public static void main(String args[]) {
 
         try {
@@ -1026,6 +1112,7 @@ public class Tela_Produto extends javax.swing.JFrame {
     private javax.swing.JLabel cadastroProduto;
     private javax.swing.JComboBox<String> cbxFornecedor;
     private javax.swing.JComboBox<String> cbxSecao;
+    private javax.swing.JFormattedTextField ftfDataRecebimento;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -1039,6 +1126,7 @@ public class Tela_Produto extends javax.swing.JFrame {
     private javax.swing.JLabel lblBuscaProduto;
     private javax.swing.JLabel lblCod;
     private javax.swing.JLabel lblCodProduto;
+    private javax.swing.JLabel lblDataRecebimento;
     private javax.swing.JLabel lblFornecedor;
     private javax.swing.JLabel lblLcrTotal;
     private javax.swing.JLabel lblLucro;
@@ -1065,4 +1153,8 @@ public class Tela_Produto extends javax.swing.JFrame {
     private javax.swing.JTextField txtPcCompra;
     private javax.swing.JTextField txtQuantidade;
     // End of variables declaration//GEN-END:variables
+
+    private void ftfDataRecebimentoActionPerformed() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

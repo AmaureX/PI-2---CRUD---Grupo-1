@@ -16,10 +16,11 @@ public class Produto {
     private double preçoTotalCompra;
     private double lucroTotal;
     private String buscaProduto;
+    private int dataRecebimento;
     public Produto() {
     }
 
-    public Produto(int IdCod, String Nome, int Quantidade, int PcCompra, int PcVenda, String Fornecedor, String Marca, int lucro, String secao, double precoTotalVenda, double precoTotalCompra, double lucroTotal, String buscaProduto) {
+    public Produto(int IdCod, String Nome, int Quantidade, int PcCompra, int PcVenda, String Fornecedor, String Marca, int lucro, String secao, double precoTotalVenda, double precoTotalCompra, double lucroTotal, String buscaProduto, int dataRecebimento) {
 
         this.idCod = IdCod;
         this.nome = Nome;
@@ -34,6 +35,7 @@ public class Produto {
         this.preçoTotalCompra = precoTotalCompra;
         this.lucroTotal = lucroTotal;
         this.buscaProduto = buscaProduto;
+        this.dataRecebimento = dataRecebimento;
     }
 
     public String getNome() {

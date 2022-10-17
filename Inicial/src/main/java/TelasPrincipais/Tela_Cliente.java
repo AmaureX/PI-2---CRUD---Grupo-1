@@ -346,6 +346,11 @@ public class Tela_Cliente extends javax.swing.JFrame {
         cbxEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Selecione item>", "Solteiro(a)", "Casado(a)", "Divorciado(a)", "Viuvo(a)" }));
 
         jButton2.setText("Limpar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -676,6 +681,10 @@ public class Tela_Cliente extends javax.swing.JFrame {
     private void rbCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCPFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbCPFActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
