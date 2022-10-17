@@ -82,8 +82,8 @@ public class Tela_Cliente extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         mnuVenda = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        mnuSintetico = new javax.swing.JMenuItem();
+        mnuAnalitico = new javax.swing.JMenuItem();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -530,11 +530,11 @@ public class Tela_Cliente extends javax.swing.JFrame {
 
         jMenu4.setText("Relatorio");
 
-        jMenuItem1.setText("Sintético");
-        jMenu4.add(jMenuItem1);
+        mnuSintetico.setText("Sintético");
+        jMenu4.add(mnuSintetico);
 
-        jMenuItem2.setText("Análitico");
-        jMenu4.add(jMenuItem2);
+        mnuAnalitico.setText("Análitico");
+        jMenu4.add(mnuAnalitico);
 
         jMenuBar1.add(jMenu4);
 
@@ -773,8 +773,6 @@ public class Tela_Cliente extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
@@ -791,7 +789,9 @@ public class Tela_Cliente extends javax.swing.JFrame {
     private javax.swing.JLabel lblGenero;
     private javax.swing.JLabel lblNcasa;
     private javax.swing.JLabel lblNome;
+    private javax.swing.JMenuItem mnuAnalitico;
     private javax.swing.JMenuItem mnuProduto;
+    private javax.swing.JMenuItem mnuSintetico;
     private javax.swing.JMenuItem mnuVenda;
     private javax.swing.JRadioButton rbCPF;
     private javax.swing.JRadioButton rbNome;

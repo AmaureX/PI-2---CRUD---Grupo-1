@@ -122,8 +122,8 @@ public class Tela_Produto extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        mnuSintetico = new javax.swing.JMenuItem();
+        mnuAnalitico = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Produto");
@@ -637,21 +637,21 @@ public class Tela_Produto extends javax.swing.JFrame {
 
         jMenu3.setText("Relatórios");
 
-        jMenuItem5.setText("Sintético");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        mnuSintetico.setText("Sintético");
+        mnuSintetico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                mnuSinteticoActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem5);
+        jMenu3.add(mnuSintetico);
 
-        jMenuItem6.setText("Analitico");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        mnuAnalitico.setText("Analitico");
+        mnuAnalitico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                mnuAnaliticoActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem6);
+        jMenu3.add(mnuAnalitico);
 
         jMenuBar1.add(jMenu3);
 
@@ -1027,18 +1027,18 @@ public class Tela_Produto extends javax.swing.JFrame {
         cliente.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+    private void mnuAnaliticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAnaliticoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    }//GEN-LAST:event_mnuAnaliticoActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         TelaDeVendas venda = new TelaDeVendas();
         venda.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void mnuSinteticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuSinteticoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_mnuSinteticoActionPerformed
 
     private void ftfDataRecebimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftfDataRecebimentoActionPerformed
 
@@ -1119,8 +1119,6 @@ public class Tela_Produto extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBuscaProduto;
@@ -1142,6 +1140,8 @@ public class Tela_Produto extends javax.swing.JFrame {
     private javax.swing.JLabel lblPrecoVenda;
     private javax.swing.JLabel lblQuantidade;
     private javax.swing.JLabel lblSecao;
+    private javax.swing.JMenuItem mnuAnalitico;
+    private javax.swing.JMenuItem mnuSintetico;
     private javax.swing.JPanel plProduto;
     private javax.swing.JRadioButton rbtCodigo;
     private javax.swing.JRadioButton rbtNome;

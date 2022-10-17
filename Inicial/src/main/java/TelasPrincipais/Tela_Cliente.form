@@ -66,12 +66,12 @@
             <Property name="text" type="java.lang.String" value="Relatorio"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="mnuSintetico">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sint&#xe9;tico"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+            <MenuItem class="javax.swing.JMenuItem" name="mnuAnalitico">
               <Properties>
                 <Property name="text" type="java.lang.String" value="An&#xe1;litico"/>
               </Properties>
