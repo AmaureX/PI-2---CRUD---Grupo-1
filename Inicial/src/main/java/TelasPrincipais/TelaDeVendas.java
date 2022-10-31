@@ -479,7 +479,6 @@ public class TelaDeVendas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-<<<<<<< Updated upstream
     private void mnuprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuprodutoActionPerformed
         Tela_Produto Produto = new Tela_Produto();
         Produto.setVisible(true);
@@ -493,11 +492,9 @@ public class TelaDeVendas extends javax.swing.JFrame {
         Tela_Cliente Cliente = new Tela_Cliente();
         Cliente.setVisible(true);
     }//GEN-LAST:event_mnuClienteActionPerformed
-=======
     private void btnExcluirItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirItemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExcluirItemActionPerformed
->>>>>>> Stashed changes
 
     /**
      * @param args the command line arguments

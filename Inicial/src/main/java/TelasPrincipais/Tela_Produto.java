@@ -1,6 +1,5 @@
 package TelasPrincipais;
 
-import TelasPrincipais.TelaDeVendas;
 import com.sun.imageio.plugins.jpeg.JPEG;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
