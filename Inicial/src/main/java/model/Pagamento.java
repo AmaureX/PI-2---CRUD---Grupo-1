@@ -10,6 +10,8 @@ package model;
  */
 public class Pagamento {
     
+    private int cpfCliente;
+    private String nomeCliente;
     private String tipoPagamento;
     private double desconto;
     private double valorFinal; 
@@ -19,6 +21,23 @@ public class Pagamento {
     public String getTipoPagamento() {
         return tipoPagamento;
     }
+
+    public int getCpfCliente() {
+        return cpfCliente;
+    }
+
+    public void setCpfCliente(int cpfCliente) {
+        this.cpfCliente = cpfCliente;
+    }
+
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
+
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
+    }
+    
     
     public void setTipoPagamento(String tipoPagamento) {
         this.tipoPagamento = tipoPagamento;

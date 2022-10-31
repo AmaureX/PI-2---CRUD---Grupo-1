@@ -24,7 +24,7 @@ public class TelaDeVendas extends javax.swing.JFrame {
         btnConcluir.setEnabled(status);
         btnCancelar.setEnabled(status);
         txtCodProd.setEnabled(status);
-        txtDescricaoProd.setEnabled(status);
+        txtNomeProd.setEnabled(status);
         txtQnt.setEnabled(status);
         txtValorUnit.setEnabled(status);
         btnAdicionarItem.setEnabled(status);
@@ -35,7 +35,7 @@ public class TelaDeVendas extends javax.swing.JFrame {
 
     private void limpaCampos() {
         txtCodProd.setText("");
-        txtDescricaoProd.setText("");
+        txtNomeProd.setText("");
         txtQnt.setText("");
         txtValorFinal.setText("");
         txtValorUnit.setText("");
@@ -56,14 +56,15 @@ public class TelaDeVendas extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         lblCodProd = new javax.swing.JLabel();
         txtCodProd = new javax.swing.JTextField();
-        lblDescricaoProd = new javax.swing.JLabel();
-        txtDescricaoProd = new javax.swing.JTextField();
+        lblNomeProd = new javax.swing.JLabel();
+        txtNomeProd = new javax.swing.JTextField();
         lblQnt = new javax.swing.JLabel();
         txtQnt = new javax.swing.JTextField();
         lblValorUnit = new javax.swing.JLabel();
         txtValorUnit = new javax.swing.JTextField();
-        btnAdicionarItem = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        btnExcluirItem = new javax.swing.JButton();
+        btnAdicionarItem = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblItens = new javax.swing.JTable();
@@ -169,12 +170,12 @@ public class TelaDeVendas extends javax.swing.JFrame {
             }
         });
 
-        lblDescricaoProd.setText("Descrição do Produto:");
+        lblNomeProd.setText("Nome do Produto:");
 
-        txtDescricaoProd.setEnabled(false);
-        txtDescricaoProd.addActionListener(new java.awt.event.ActionListener() {
+        txtNomeProd.setEnabled(false);
+        txtNomeProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDescricaoProdActionPerformed(evt);
+                txtNomeProdActionPerformed(evt);
             }
         });
 
@@ -196,18 +197,26 @@ public class TelaDeVendas extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("...");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        btnExcluirItem.setText("Excluir Item");
+        btnExcluirItem.setEnabled(false);
+        btnExcluirItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirItemActionPerformed(evt);
+            }
+        });
+
         btnAdicionarItem.setText("Adicionar Item");
         btnAdicionarItem.setEnabled(false);
         btnAdicionarItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdicionarItemActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("...");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
             }
         });
 
@@ -233,14 +242,19 @@ public class TelaDeVendas extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtValorUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblDescricaoProd)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDescricaoProd, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdicionarItem, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblNomeProd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNomeProd, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnExcluirItem, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAdicionarItem, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,21 +263,20 @@ public class TelaDeVendas extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCodProd)
                     .addComponent(txtCodProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDescricaoProd)
-                    .addComponent(txtDescricaoProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNomeProd)
+                    .addComponent(txtNomeProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblQnt)
-                            .addComponent(txtQnt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtValorUnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblValorUnit)))
-                    .addComponent(btnAdicionarItem, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblQnt)
+                    .addComponent(txtQnt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtValorUnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblValorUnit)
+                    .addComponent(btnAdicionarItem, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExcluirItem, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Itens Adicionados:"));
@@ -381,7 +394,9 @@ public class TelaDeVendas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(222, 222, 222))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
@@ -448,9 +463,9 @@ public class TelaDeVendas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAdicionarItemActionPerformed
 
-    private void txtDescricaoProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescricaoProdActionPerformed
+    private void txtNomeProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeProdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDescricaoProdActionPerformed
+    }//GEN-LAST:event_txtNomeProdActionPerformed
 
     private void txtValorFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorFinalActionPerformed
 
@@ -464,6 +479,7 @@ public class TelaDeVendas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+<<<<<<< Updated upstream
     private void mnuprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuprodutoActionPerformed
         Tela_Produto Produto = new Tela_Produto();
         Produto.setVisible(true);
@@ -477,6 +493,11 @@ public class TelaDeVendas extends javax.swing.JFrame {
         Tela_Cliente Cliente = new Tela_Cliente();
         Cliente.setVisible(true);
     }//GEN-LAST:event_mnuClienteActionPerformed
+=======
+    private void btnExcluirItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExcluirItemActionPerformed
+>>>>>>> Stashed changes
 
     /**
      * @param args the command line arguments
@@ -520,6 +541,7 @@ public class TelaDeVendas extends javax.swing.JFrame {
     private javax.swing.JButton btnAdicionarItem;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnConcluir;
+    private javax.swing.JButton btnExcluirItem;
     private javax.swing.JButton btnIniciar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -535,7 +557,7 @@ public class TelaDeVendas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblCodProd;
-    private javax.swing.JLabel lblDescricaoProd;
+    private javax.swing.JLabel lblNomeProd;
     private javax.swing.JLabel lblQnt;
     private javax.swing.JLabel lblValorFinal;
     private javax.swing.JLabel lblValorUnit;
@@ -546,7 +568,7 @@ public class TelaDeVendas extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuproduto;
     private javax.swing.JTable tblItens;
     private javax.swing.JTextField txtCodProd;
-    private javax.swing.JTextField txtDescricaoProd;
+    private javax.swing.JTextField txtNomeProd;
     private javax.swing.JTextField txtQnt;
     private javax.swing.JTextField txtValorFinal;
     private javax.swing.JTextField txtValorUnit;
