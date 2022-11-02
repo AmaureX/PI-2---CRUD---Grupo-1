@@ -1,7 +1,16 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author ciluc
+ */
 package model;
 
 // @author cilucena
-public class Produto {
+public class Produto{
 
     private int idCod;
     private String nome;
@@ -12,15 +21,12 @@ public class Produto {
     private String marca;
     private int lucro;
     private String secao;
-    private double precoTotalVenda;
-    private double preçoTotalCompra;
-    private double lucroTotal;
     private String buscaProduto;
     private int dataRecebimento;
     public Produto() {
     }
 
-    public Produto(int IdCod, String Nome, int Quantidade, int PcCompra, int PcVenda, String Fornecedor, String Marca, int lucro, String secao, double precoTotalVenda, double precoTotalCompra, double lucroTotal, String buscaProduto, int dataRecebimento) {
+    public Produto(int IdCod, String Nome, int Quantidade, int PcCompra, int PcVenda, String Fornecedor, String Marca, int lucro, String secao, String buscaProduto, int dataRecebimento) {
 
         this.idCod = IdCod;
         this.nome = Nome;
@@ -31,11 +37,16 @@ public class Produto {
         this.marca = Marca;
         this.lucro = lucro;
         this.secao = secao;
-        this.precoTotalVenda = precoTotalVenda;
-        this.preçoTotalCompra = precoTotalCompra;
-        this.lucroTotal = lucroTotal;
         this.buscaProduto = buscaProduto;
         this.dataRecebimento = dataRecebimento;
+    }
+
+    public int getIdCod() {
+        return idCod;
+    }
+
+    public void setIdCod(int idCod) {
+        this.idCod = idCod;
     }
 
     public String getNome() {
@@ -44,6 +55,38 @@ public class Produto {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public double getPcCompra() {
+        return pcCompra;
+    }
+
+    public void setPcCompra(double pcCompra) {
+        this.pcCompra = pcCompra;
+    }
+
+    public double getPcVenda() {
+        return pcVenda;
+    }
+
+    public void setPcVenda(double pcVenda) {
+        this.pcVenda = pcVenda;
+    }
+
+    public String getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(String fornecedor) {
+        this.fornecedor = fornecedor;
     }
 
     public String getMarca() {
@@ -70,75 +113,20 @@ public class Produto {
         this.secao = secao;
     }
 
-    public double getPrecoTotalVenda() {
-        return precoTotalVenda;
+    public String getBuscaProduto() {
+        return buscaProduto;
     }
 
-    public void setPrecoTotalVenda(double precoTotalVenda) {
-        this.precoTotalVenda = precoTotalVenda;
+    public void setBuscaProduto(String buscaProduto) {
+        this.buscaProduto = buscaProduto;
     }
 
-    public double getPreçoTotalCompra() {
-        return preçoTotalCompra;
+    public int getDataRecebimento() {
+        return dataRecebimento;
     }
 
-    public void setPreçoTotalCompra(double preçoTotalCompra) {
-        this.preçoTotalCompra = preçoTotalCompra;
+    public void setDataRecebimento(int dataRecebimento) {
+        this.dataRecebimento = dataRecebimento;
     }
 
-    public double getLucroTotal() {
-        return lucroTotal;
-    }
-
-    public void setLucroTotal(double lucroTotal) {
-        this.lucroTotal = lucroTotal;
-    }
-
-    public int getIdCod() {
-        return idCod;
-    }
-
-    public void setIdCod(int idCod) {
-        this.idCod = idCod;
-    }
-
-    public String getProduto() {
-        return nome;
-    }
-
-    public void setProduto(String produto) {
-        this.nome = nome;
-    }
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public double getPcCompra() {
-        return pcCompra;
-    }
-
-    public void setPcCompra(int pcCompra) {
-        this.pcCompra = pcCompra;
-    }
-
-    public double getPcVenda() {
-        return pcVenda;
-    }
-
-    public void setPcVenda(int pcVenda) {
-        this.pcVenda = pcVenda;
-    }
-
-    public String getFornecedor() {
-        return fornecedor;
-    }
-
-    public void setFornecedor(String fornecedor) {
-        this.fornecedor = fornecedor;
-    }
 }
