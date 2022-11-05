@@ -196,6 +196,11 @@ public class Tela_Cliente extends javax.swing.JFrame {
         jScrollPane1.setViewportView(Tabela_Cliente);
 
         jButton1.setText("Descrição");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         btNovoCadastro.setText("Novo cadastro");
         btNovoCadastro.addActionListener(new java.awt.event.ActionListener() {
@@ -531,9 +536,19 @@ public class Tela_Cliente extends javax.swing.JFrame {
         jMenu4.setText("Relatorio");
 
         mnuSintetico.setText("Sintético");
+        mnuSintetico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuSinteticoActionPerformed(evt);
+            }
+        });
         jMenu4.add(mnuSintetico);
 
         mnuAnalitico.setText("Análitico");
+        mnuAnalitico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuAnaliticoActionPerformed(evt);
+            }
+        });
         jMenu4.add(mnuAnalitico);
 
         jMenuBar1.add(jMenu4);
@@ -715,6 +730,18 @@ public class Tela_Cliente extends javax.swing.JFrame {
         TelaDeVendas Venda = new TelaDeVendas();
         Venda.setVisible(true);
     }//GEN-LAST:event_mnuVendaActionPerformed
+
+    private void mnuSinteticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuSinteticoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuSinteticoActionPerformed
+
+    private void mnuAnaliticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAnaliticoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuAnaliticoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
