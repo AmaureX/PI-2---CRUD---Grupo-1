@@ -4,6 +4,10 @@
  */
 package model;
 
+import java.util.Date;
+
+
+
 /**
  *
  * @author ciluc
@@ -11,12 +15,12 @@ package model;
 public class Cliente {
     private String Nome;
     private String CPF;
+    private Date DataNascimento;
     private String Genero;
     private String EstadoCivil;
     private String Endereco;
     private String CEP;
     private String Bairro;
-    private String NumeroCasa;
     private String Celular;
     private String Email;
 
@@ -34,6 +38,13 @@ public class Cliente {
 
     public void setCPF(String CPF) {
         this.CPF = CPF;
+    }
+     public Date getDataNascimento() {
+        return DataNascimento;
+    }
+
+    public void setDataNascimento(Date DataNascimento) {
+        this.DataNascimento = DataNascimento;
     }
 
     public String getGenero() {
@@ -74,14 +85,6 @@ public class Cliente {
 
     public void setBairro(String Bairro) {
         this.Bairro = Bairro;
-    }
-
-    public String getNumeroCasa() {
-        return NumeroCasa;
-    }
-
-    public void setNumeroCasa(String NumeroCasa) {
-        this.NumeroCasa = NumeroCasa;
     }
 
     public String getCelular() {
