@@ -315,7 +315,7 @@ public class Tela_Cliente extends javax.swing.JFrame {
         lblCelular.setText("Celular:");
 
         try {
-            txtCelular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)# ####-####")));
+            txtCelular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -614,7 +614,7 @@ public class Tela_Cliente extends javax.swing.JFrame {
 
         }
 
-        if (txtCelular.getText().trim().equals("")) {
+        if (txtCelular.getText().replace("(", "").replace(")", "").replace("-", "").trim().equals("")) {
             lblCelular.setForeground(Color.red);
             erros.add("Insira o Número de telefone");
 
@@ -669,7 +669,7 @@ public class Tela_Cliente extends javax.swing.JFrame {
     private void txtBuscaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscaKeyTyped
         if (rbNome.isSelected()) {
 
-            if (txtBusca.getText().length() >= 55) {
+            if (txtBusca.getText().length() >= 100) {
                 evt.consume();
                 JOptionPane.showMessageDialog(this, "Número máximo de caracteres digitados!");
                 txtBusca.setText("");
