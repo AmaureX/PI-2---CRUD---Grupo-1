@@ -1,9 +1,11 @@
 package TelasPrincipais;
 
+import DAO.ClienteDAO;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import model.Cliente;
 
 
 /*
@@ -629,21 +631,39 @@ public class Tela_Cliente extends javax.swing.JFrame {
         } else if (erros.size() <= 0) {
             int resposta = JOptionPane.showConfirmDialog(null, "Deseja Salvar?", "Salvar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (resposta == 0) {
-                try {   
-                String Nome = txtNomeCliente.getText();
-                int CPF = Integer.parseInt(txtCPF.getText()) ;
-                Date DataNascimento = jdcDataNascimento.getDate();
-                String Genero;
-                String EstadoCivil;
-                String Logradouro = txtLogradouro.getText();
-                int CEP = Integer.parseInt(txtCEP.getText());
-                String Bairro = txtBairro.getText();
-                int Celular = Integer.parseInt(txtCelular.getText()) ;
-                String Email = txtEmail.getText();
+                try {
+                    String Nome_cliente = txtNomeCliente.getText();
+                    String CPF = txtCPF.getText().replace(".", "").replace(".", "").replace("-","");
+                    Date DataNascimento = jdcDataNascimento.getDate();
+                    String Genero = cbxGenero.getSelectedItem().toString();
+                    String EstadoCivil = cbxEstadoCivil.getSelectedItem().toString();
+                    String Logradouro = txtLogradouro.getText();
+                    String CEP = txtCEP.getText().replace("-","");
+                    String Bairro = txtBairro.getText();
+                    String Celular = txtCelular.getText().replace("(","").replace(")","").replace("-","");
+                    String Email = txtEmail.getText();
+                    
+                    Cliente objCliente = new Cliente();
+                    objCliente.setNome(Nome_cliente);
+                    objCliente.setCPF(CPF);
+                    objCliente.setDataNascimento(DataNascimento);
+                    objCliente.setGenero(Genero);
+                    objCliente.setEstadoCivil(EstadoCivil);
+                    objCliente.setEndereco(Logradouro);
+                    objCliente.setCEP(CEP);
+                    objCliente.setBairro(Bairro);
+                    objCliente.setCelular(Celular);
+                    objCliente.setEmail(Email);
+                    
+                    ClienteDAO salvarCliente = new ClienteDAO();
+                    salvarCliente.Salvar(objCliente);
+                    
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(this, e);
-                            }
-        }
+                
+                }
+                
+            }
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
