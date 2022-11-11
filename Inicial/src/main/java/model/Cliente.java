@@ -23,7 +23,16 @@ public class Cliente {
     private String Bairro;
     private String Celular;
     private String Email;
+    private String Procurar; 
 
+    public String getProcurar() {
+        return Procurar;
+    }
+
+    public void setProcurar(String Procurar) {
+        this.Procurar = Procurar;
+    }
+        
     public String getNome() {
         return Nome;
     }

@@ -1,10 +1,12 @@
 package TelasPrincipais;
 
 import DAO.ClienteDAO;
+import com.mysql.cj.xdevapi.Client;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.Cliente;
 
 
@@ -24,6 +26,22 @@ public class Tela_Cliente extends javax.swing.JFrame {
     public Tela_Cliente() {
         initComponents();
         jTabbedPane1.setEnabledAt(1, false);
+        ListarTabela();;
+    }
+    public void ListarTabela(){
+        DefaultTableModel Modelo = (DefaultTableModel) Tabela_Cliente.getModel();
+        Modelo.setNumRows(0);
+        ClienteDAO clienteDAO = new ClienteDAO();
+        
+        for(Cliente cli: clienteDAO.ListarProduto()){
+            Modelo.addRow(new String[]{
+                cli.getCPF(),
+                cli.getNome(),
+                cli.getCelular(),
+                cli.getEmail()
+            });
+            
+        }
     }
 
     /**
@@ -559,7 +577,8 @@ public class Tela_Cliente extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         ArrayList<String> erros = new ArrayList();
-
+        ArrayList<String>ListaCliente = new ArrayList();
+        
         lblNome.setForeground(Color.BLACK);
         lblCPF.setForeground(Color.BLACK);
         lblDataNascimento.setForeground(Color.BLACK);
@@ -655,9 +674,12 @@ public class Tela_Cliente extends javax.swing.JFrame {
                     objCliente.setCelular(Celular);
                     objCliente.setEmail(Email);
                     
+                    
                     ClienteDAO salvarCliente = new ClienteDAO();
                     salvarCliente.Salvar(objCliente);
                     
+                    ListarTabela();
+                    limparCampos();
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(this, e);
                 
@@ -701,7 +723,11 @@ public class Tela_Cliente extends javax.swing.JFrame {
             if (!caracteres.contains(evt.getKeyChar() + "")) {
                 evt.consume();
             }
+            if(txtBusca.getText().length()>=11){
+                evt.consume();
+            } 
         }
+        
     }//GEN-LAST:event_txtBuscaKeyTyped
 
     private void btProcurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProcurarActionPerformed
@@ -715,11 +741,12 @@ public class Tela_Cliente extends javax.swing.JFrame {
             if (txtBusca.getText().trim().equals("")) {
                 JOptionPane.showMessageDialog(this, "Digite o CPF do cliente para busca-lo");
             }
-            if (txtBusca.getText().trim().length() >= 12 || txtBusca.getText().length() <= 10) {
+            if (txtBusca.getText().trim().length() >12) {
                 JOptionPane.showMessageDialog(this, "Digite apenas os 11 digitos do CPF");
+                txtBusca.setText("");
             }
         }
-
+        String Procurar = txtBusca.getText(); 
     }//GEN-LAST:event_btProcurarActionPerformed
 
     private void mnuProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuProdutoActionPerformed
@@ -741,20 +768,12 @@ public class Tela_Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuAnaliticoActionPerformed
 
     private void BtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAlterarActionPerformed
-        // TODO add your handling code here:
+        int LinhaSelecionada = Tabela_Cliente.getSelectedRow();
+        
     }//GEN-LAST:event_BtnAlterarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        txtNomeCliente.setText("");
-        txtCPF.setText("");
-        txtLogradouro.setText("");
-        txtBairro.setText("");
-        txtCEP.setText("");
-        cbxEstadoCivil.setSelectedIndex(0);
-        cbxGenero.setSelectedIndex(0);
-        txtEmail.setText("");
-        txtCelular.setText("");
-        jdcDataNascimento.setDate(null);
+        limparCampos();
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void txtBairroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBairroKeyTyped
@@ -856,4 +875,18 @@ public class Tela_Cliente extends javax.swing.JFrame {
     private javax.swing.JTextField txtLogradouro;
     private javax.swing.JTextField txtNomeCliente;
     // End of variables declaration//GEN-END:variables
+
+    public void limparCampos(){
+        txtNomeCliente.setText("");
+        txtCPF.setText("");
+        txtLogradouro.setText("");
+        txtBairro.setText("");
+        txtCEP.setText("");
+        cbxEstadoCivil.setSelectedIndex(0);
+        cbxGenero.setSelectedIndex(0);
+        txtEmail.setText("");
+        txtCelular.setText("");
+        jdcDataNascimento.setDate(null);
+    }
+
 }
