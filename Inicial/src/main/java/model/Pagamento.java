@@ -14,12 +14,20 @@ public class Pagamento {
     private String nomeCliente;
     private String tipoPagamento;
     private double desconto;
-    private double valorFinal; 
+    private double valorFinal;
+    private double subtotal;
     private String parcelamento;
     private String juros;
 
-    public String getTipoPagamento() {
+     public String getTipoPagamento() {
         return tipoPagamento;
+    }
+    public double getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(double subtotal) {
+        this.subtotal = subtotal;
     }
 
     public int getCpfCliente() {
