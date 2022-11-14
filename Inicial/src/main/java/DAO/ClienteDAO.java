@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -53,8 +54,37 @@ public class ClienteDAO {
         }
         return Retorno;
     }
+    public static boolean Alterar(Cliente obj) {
+        boolean Retorno = false;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection Conexao = DriverManager.getConnection(URL, Login, Senha); 
+            PreparedStatement ComandoSQL = Conexao.prepareStatement("UPDATE clientes SET cpf = ?,nome_cliente = ? ,data_nasc = ? ,genero = ?,estado_civil = ?,lougradouro = ?,bairro = ?,cep = ? ,email = ?,celular = ? WHERE cpf = ?", Statement.RETURN_GENERATED_KEYS);
 
-    public List<Cliente> ListarProduto() {
+            ComandoSQL.setString(1, obj.getCPF());
+            ComandoSQL.setString(2, obj.getNome());
+            ComandoSQL.setDate(3, new java.sql.Date(obj.getDataNascimento().getTime()));
+            ComandoSQL.setString(4, obj.getGenero());
+            ComandoSQL.setString(5, obj.getEstadoCivil());
+            ComandoSQL.setString(6, obj.getEndereco());
+            ComandoSQL.setString(7, obj.getBairro());
+            ComandoSQL.setString(8, obj.getCEP());
+            ComandoSQL.setString(9, obj.getEmail());
+            ComandoSQL.setString(10, obj.getCelular());
+            ComandoSQL.setString(11, obj.getCPF());
+
+            int NumeroLinha = ComandoSQL.executeUpdate();
+            if (NumeroLinha > 0) {
+                Retorno = true;
+            }
+            JOptionPane.showMessageDialog(null, "Alterado com Sucesso!");
+        } catch (ClassNotFoundException | SQLException erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        }
+        return Retorno;
+    }
+
+    public List<Cliente> ListarCliente() {
         List<Cliente> listaCliente = new ArrayList<>();
 
         try {
@@ -72,6 +102,15 @@ public class ClienteDAO {
                 Cliente.setNome(rs.getString("nome_cliente"));
                 Cliente.setCelular(rs.getString("celular"));
                 Cliente.setEmail(rs.getString("email"));
+                Cliente.setDataNascimento(rs.getDate("data_nasc"));
+                Cliente.setGenero(rs.getString("genero"));
+                Cliente.setEstadoCivil(rs.getString("estado_civil"));
+                Cliente.setEndereco(rs.getString("lougradouro"));
+                Cliente.setBairro(rs.getString("bairro"));
+                Cliente.setCEP(rs.getString("cep"));
+                
+                
+                
                 listaCliente.add(Cliente);
             }
         } catch (ClassNotFoundException | SQLException erro) {
