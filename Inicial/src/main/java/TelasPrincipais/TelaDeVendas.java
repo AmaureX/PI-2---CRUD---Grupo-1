@@ -4,7 +4,9 @@
  */
 package TelasPrincipais;
 
+import DAO.PagamentoDAO;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Pagamento;
@@ -34,7 +36,6 @@ public class TelaDeVendas extends javax.swing.JFrame {
         btnAdicionarItem.setEnabled(status);
         btnExcluirItem.setEnabled(status);
         tblItens.setEnabled(status);
-        jdcDataVenda.setEnabled(status);
 
     }
 
@@ -75,9 +76,6 @@ public class TelaDeVendas extends javax.swing.JFrame {
         btnConcluir = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        lblDataVenda = new javax.swing.JLabel();
-        jdcDataVenda = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         lblCodProd = new javax.swing.JLabel();
         txtCodProd = new javax.swing.JTextField();
@@ -150,12 +148,6 @@ public class TelaDeVendas extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Código da Venda:");
-
-        jLabel2.setText("0");
-
-        lblDataVenda.setText("Data da Venda: ");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -169,27 +161,17 @@ public class TelaDeVendas extends javax.swing.JFrame {
                 .addComponent(btnCancelar)
                 .addGap(87, 87, 87)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addGap(77, 77, 77)
-                .addComponent(lblDataVenda)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jdcDataVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jdcDataVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnConcluir)
-                        .addComponent(btnIniciar)
-                        .addComponent(btnCancelar)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel2)
-                        .addComponent(lblDataVenda)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnConcluir)
+                    .addComponent(btnIniciar)
+                    .addComponent(btnCancelar)
+                    .addComponent(jLabel1))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -472,9 +454,36 @@ public class TelaDeVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConcluirActionPerformed
+
         if (tblItens.getRowCount() == 0) {
             JOptionPane.showMessageDialog(this, "Insira ao menos 1 produto");
             return;
+        }
+
+        ArrayList<Vendas> listaItens = new ArrayList<Vendas>();
+
+        if (tblItens.getRowCount() > 0) {
+            for (int i = 0; i < tblItens.getRowCount(); i++) {
+                Vendas v = new Vendas();
+
+                v.setCodProduto(Integer.parseInt(tblItens.getValueAt(i, 0).toString()));
+                v.setNomeProduto(tblItens.getValueAt(i, 1).toString());
+                v.setQuantidade(Integer.parseInt(tblItens.getValueAt(i, 2).toString()));
+                v.setValorUnitario(Double.parseDouble(tblItens.getValueAt(i, 3).toString()));
+                v.setValorTotal(Double.parseDouble(tblItens.getValueAt(i, 4).toString()));
+
+                listaItens.add(v);
+            }
+        }
+
+        Pagamento objPagamento = new Pagamento();
+        objPagamento.setListaItens(listaItens);
+
+        boolean retorno = PagamentoDAO.Salvar(objPagamento);
+        if (retorno) {
+            JOptionPane.showMessageDialog(this, "Nota gravada com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Falha na gravação!");
         }
 
         Pagamento v = new Pagamento();
@@ -646,7 +655,6 @@ public class TelaDeVendas extends javax.swing.JFrame {
     private javax.swing.JButton btnExcluirItem;
     private javax.swing.JButton btnIniciar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -657,9 +665,7 @@ public class TelaDeVendas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private com.toedter.calendar.JDateChooser jdcDataVenda;
     private javax.swing.JLabel lblCodProd;
-    private javax.swing.JLabel lblDataVenda;
     private javax.swing.JLabel lblNomeProd;
     private javax.swing.JLabel lblQnt;
     private javax.swing.JLabel lblValor;

@@ -4,24 +4,21 @@
  */
 package model;
 
+
 /**
  *
  * @author csnas
  */
 public class Vendas {
-    private int codVendas;
+
     private int quantidade;
-    private int valorUnitario;
-    private int codProduto; 
+    private double valorUnitario;
+    private double valorTotal;
+    private int codProduto;
     private String nomeProduto;
-    private double valorFinal;
 
-    public int getCodVendas() {
-        return codVendas;
-    }
 
-    public void setCodVendas(int codVendas) {
-        this.codVendas = codVendas;
+    public Vendas() {
     }
 
     public int getQuantidade() {
@@ -32,11 +29,11 @@ public class Vendas {
         this.quantidade = quantidade;
     }
 
-    public int getValorUnitario() {
+    public double getValorUnitario() {
         return valorUnitario;
     }
 
-    public void setValorUnitario(int valorUnitario) {
+    public void setValorUnitario(double valorUnitario) {
         this.valorUnitario = valorUnitario;
     }
 
@@ -48,6 +45,14 @@ public class Vendas {
         this.codProduto = codProduto;
     }
 
+    public double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
     public String getNomeProduto() {
         return nomeProduto;
     }
@@ -55,17 +60,10 @@ public class Vendas {
     public void setNomeProduto(String nomeProduto) {
         this.nomeProduto = nomeProduto;
     }
-
-    public double getValorFinal() {
-        return valorFinal;
     }
 
-    public void setValorFinal(double valorFinal) {
-        this.valorFinal = valorFinal;
-    }
+  
     
     
-    
-    
-    
-}
+
+

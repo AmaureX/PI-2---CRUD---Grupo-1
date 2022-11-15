@@ -4,20 +4,30 @@
  */
 package model;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 /**
  *
- * @author ciluc
+ * @author Catiane;
  */
 public class Pagamento {
     
-    private int cpfCliente;
+    private String cpfCliente;
+    private int codVenda;
     private String nomeCliente;
     private String tipoPagamento;
     private double desconto;
     private double valorFinal;
     private double subtotal;
+    private double valorRecebido;
     private String parcelamento;
-    private String juros;
+    private double juros;
+    private double troco;
+    private Date dataVenda;
+     
+    
+    private ArrayList<Vendas> listaItens = null;
 
      public String getTipoPagamento() {
         return tipoPagamento;
@@ -30,11 +40,11 @@ public class Pagamento {
         this.subtotal = subtotal;
     }
 
-    public int getCpfCliente() {
+    public String getCpfCliente() {
         return cpfCliente;
     }
 
-    public void setCpfCliente(int cpfCliente) {
+    public void setCpfCliente(String cpfCliente) {
         this.cpfCliente = cpfCliente;
     }
 
@@ -75,12 +85,53 @@ public class Pagamento {
         this.parcelamento = parcelamento;
     }
 
-    public String getJuros() {
+    public double getJuros() {
         return juros;
     }
     
-    public void setJuros(String juros){
+    public void setJuros(double juros){
         this.juros = juros;
     }  
+
+    public int getCodVenda() {
+        return codVenda;
+    }
+
+    public void setCodVenda(int codVenda) {
+        this.codVenda = codVenda;
+    }
+
+    public ArrayList<Vendas> getListaItens() {
+        return listaItens;
+    }
+
+    public void setListaItens(ArrayList<Vendas> listaItens) {
+        this.listaItens = listaItens;
+    }
+
+    public Date getDataVenda() {
+        return dataVenda;
+    }
+
+    public void setDataVenda(Date dataVenda) {
+        this.dataVenda = dataVenda;
+    }
+
+    public double getValorRecebido() {
+        return valorRecebido;
+    }
+
+    public void setValorRecebido(double valorRecebido) {
+        this.valorRecebido = valorRecebido;
+    } 
+
+    public double getTroco() {
+        return troco;
+    }
+
+    public void setTroco(double troco) {
+        this.troco = troco;
+    }
+    
        
 }
