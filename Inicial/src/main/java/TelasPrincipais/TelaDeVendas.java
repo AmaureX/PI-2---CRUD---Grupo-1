@@ -4,7 +4,7 @@
  */
 package TelasPrincipais;
 
-import DAO.PagamentoDAO;
+import DAO.VendasDAO;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -479,7 +479,7 @@ public class TelaDeVendas extends javax.swing.JFrame {
         Pagamento objPagamento = new Pagamento();
         objPagamento.setListaItens(listaItens);
 
-        boolean retorno = PagamentoDAO.Salvar(objPagamento);
+        boolean retorno = VendasDAO.Salvar(objPagamento);
         if (retorno) {
             JOptionPane.showMessageDialog(this, "Nota gravada com sucesso!");
         } else {

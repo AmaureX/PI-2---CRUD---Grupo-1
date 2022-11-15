@@ -4,6 +4,7 @@
  */
 package TelasPrincipais;
 
+import DAO.VendasDAO;
 import DAO.PagamentoDAO;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -318,7 +319,7 @@ public class TelaDePagamento extends javax.swing.JFrame {
 
         panelParcelamento.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Parcelamento:"));
 
-        boxQntParcelas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Selecione uma opção>", "2x sem juros", "3x sem juros ", "4x com juros", "5x com juros", "6x com juros" }));
+        boxQntParcelas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "2x ", "3x ", "4x", "5x ", "6x " }));
         boxQntParcelas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boxQntParcelasActionPerformed(evt);
@@ -412,8 +413,7 @@ public class TelaDePagamento extends javax.swing.JFrame {
                                 .addGap(81, 81, 81)
                                 .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(156, 156, 156)
-                                .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -484,6 +484,7 @@ public class TelaDePagamento extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Digite o valor Recebido");
             return;
         }
+        try {
         double valorFinal = Double.parseDouble(txtValorFinal.getText());
         double valorRecebido = Double.parseDouble(txtValorRecebido.getText());
 
@@ -491,7 +492,11 @@ public class TelaDePagamento extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "O valor recebido é menor que o valor final da compra");
             return;
         }
-        
+        }catch (NumberFormatException e) {
+            
+        }
+            
+        try {
         int cod = Integer.parseInt(lblCodVenda.getText());
         Date data = jdcDataVenda.getDate();
         String nome = txtCliente.getText();
@@ -505,10 +510,11 @@ public class TelaDePagamento extends javax.swing.JFrame {
         double valorRec = Double.parseDouble(txtValorRecebido.getText());
         double troco = Double.parseDouble(txtTroco.getText());
         
+        
         Pagamento objPagamento = new Pagamento();
         
         objPagamento.setCodVenda(cod);
-        objPagamento.setDataVenda(data);
+        //objPagamento.setDataVenda(data);
         objPagamento.setNomeCliente(nome);
         objPagamento.setCpfCliente(cpf);
         objPagamento.setTipoPagamento(tipoPag);
@@ -521,17 +527,21 @@ public class TelaDePagamento extends javax.swing.JFrame {
         objPagamento.setTroco(troco);
         
          boolean retorno = PagamentoDAO.Salvar(objPagamento);
+         
         if (retorno){
             JOptionPane.showMessageDialog(this, "Nota gravada com sucesso!");
         } else{
             JOptionPane.showMessageDialog(this, "Falha na gravação!");
         }
-
+        }catch (NumberFormatException e) {
+            
+        }
        
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
     private void boxTipoPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxTipoPagActionPerformed
 
+        try {
         if (boxTipoPag.getSelectedItem().equals("Cartão de Crédito Parcelado")) {
             boxQntParcelas.setEnabled(true);
 
@@ -539,6 +549,9 @@ public class TelaDePagamento extends javax.swing.JFrame {
             double juros = 0;
             txtJuros.setText(String.valueOf(juros));
             boxQntParcelas.setEnabled(false);
+        }
+        }catch (NumberFormatException e) {
+            
         }
 
         if (boxTipoPag.getSelectedItem().equals("Dinheiro")) {
@@ -552,9 +565,10 @@ public class TelaDePagamento extends javax.swing.JFrame {
 
     private void boxQntParcelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxQntParcelasActionPerformed
 
-        if (boxQntParcelas.getSelectedItem().equals("4x com juros")
-                || boxQntParcelas.getSelectedItem().equals("5x com juros")
-                || boxQntParcelas.getSelectedItem().equals("6x com juros")) {
+        try{
+        if (boxQntParcelas.getSelectedItem().equals("4x")
+                || boxQntParcelas.getSelectedItem().equals("5x")
+                || boxQntParcelas.getSelectedItem().equals("6x")) {
 
             txtJuros.setEditable(false);
 
@@ -565,6 +579,9 @@ public class TelaDePagamento extends javax.swing.JFrame {
         } else {
             txtJuros.setEditable(false);
 
+        }
+        } catch (NumberFormatException e) {
+            
         }
      }//GEN-LAST:event_boxQntParcelasActionPerformed
 
@@ -627,6 +644,7 @@ public class TelaDePagamento extends javax.swing.JFrame {
     }//GEN-LAST:event_txtValorRecebidoMouseClicked
 
     private void txtValorFinalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtValorFinalMouseClicked
+       try {
         double subtotal = Double.parseDouble(txtValorTotal.getText());
         double desconto = Double.parseDouble(txtDesconto.getText());
         double juros = Double.parseDouble(txtJuros.getText());
@@ -634,16 +652,22 @@ public class TelaDePagamento extends javax.swing.JFrame {
         txtDesconto.setText(String.valueOf(desconto));
         txtValorFinal.setText(valorFinal);
 
-
+       } catch (NumberFormatException e) {
+           
+       }
     }//GEN-LAST:event_txtValorFinalMouseClicked
 
     private void txtTrocoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTrocoMouseClicked
+       try{
         if (boxTipoPag.getSelectedItem().equals("Dinheiro")) {
             double valorRec = Double.parseDouble(txtValorRecebido.getText());
             double valorFinal = Double.parseDouble(txtValorFinal.getText());
             String troco = String.valueOf(valorRec - valorFinal);
             txtTroco.setText(troco);
         }
+       } catch (NumberFormatException e) {
+           
+       }
     }//GEN-LAST:event_txtTrocoMouseClicked
 
     /**

@@ -429,12 +429,12 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="6">
-                <StringItem index="0" value="&lt;Selecione uma op&#xe7;&#xe3;o&gt;"/>
-                <StringItem index="1" value="2x sem juros"/>
-                <StringItem index="2" value="3x sem juros "/>
-                <StringItem index="3" value="4x com juros"/>
-                <StringItem index="4" value="5x com juros"/>
-                <StringItem index="5" value="6x com juros"/>
+                <StringItem index="0" value="0"/>
+                <StringItem index="1" value="2x "/>
+                <StringItem index="2" value="3x "/>
+                <StringItem index="3" value="4x"/>
+                <StringItem index="4" value="5x "/>
+                <StringItem index="5" value="6x "/>
               </StringArray>
             </Property>
           </Properties>
