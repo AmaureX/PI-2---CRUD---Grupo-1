@@ -732,7 +732,8 @@ public class Tela_Cliente extends javax.swing.JFrame {
             if (txtBusca.getText().trim().equals("")) {
                 JOptionPane.showMessageDialog(this, "Digite o nome do cliente para busca-lo");
             }
-            return;
+            BuscarporNome(txtBusca.getText());
+            return;         
         }
         if (rbCPF.isSelected()) {
             if (txtBusca.getText().trim().equals("")) {
@@ -742,6 +743,7 @@ public class Tela_Cliente extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Digite apenas os 11 digitos do CPF");
                 txtBusca.setText("");
             }
+            BuscarporCPF(txtBusca.getText());
         }
         String Procurar = txtBusca.getText(); 
     }//GEN-LAST:event_btProcurarActionPerformed
@@ -921,6 +923,48 @@ public class Tela_Cliente extends javax.swing.JFrame {
         ClienteDAO clienteDAO = new ClienteDAO();
         
         for(Cliente cli: clienteDAO.ListarCliente()){
+            Modelo.addRow(new String[]{
+                cli.getCPF(),
+                cli.getNome(),
+                cli.getCelular(),
+                cli.getEmail(),
+                cli.getDataNascimento().toString(),
+                cli.getGenero(),
+                cli.getEstadoCivil(),
+                cli.getEndereco(),
+                cli.getBairro(),
+                cli.getCEP()                   
+            });
+            
+        }
+    }
+    public void BuscarporNome(String Busca){
+        DefaultTableModel Modelo = (DefaultTableModel) Tabela_Cliente.getModel();
+        Modelo.setNumRows(0);
+        ClienteDAO clienteDAO = new ClienteDAO();
+        
+        for(Cliente cli: clienteDAO.BuscarClienteNome(Busca)){
+            Modelo.addRow(new String[]{
+                cli.getCPF(),
+                cli.getNome(),
+                cli.getCelular(),
+                cli.getEmail(),
+                cli.getDataNascimento().toString(),
+                cli.getGenero(),
+                cli.getEstadoCivil(),
+                cli.getEndereco(),
+                cli.getBairro(),
+                cli.getCEP()                   
+            });
+            
+        }
+    }
+    public void BuscarporCPF(String Busca){
+        DefaultTableModel Modelo = (DefaultTableModel) Tabela_Cliente.getModel();
+        Modelo.setNumRows(0);
+        ClienteDAO clienteDAO = new ClienteDAO();
+        
+        for(Cliente cli: clienteDAO.BuscarClientecpf(Busca)){
             Modelo.addRow(new String[]{
                 cli.getCPF(),
                 cli.getNome(),

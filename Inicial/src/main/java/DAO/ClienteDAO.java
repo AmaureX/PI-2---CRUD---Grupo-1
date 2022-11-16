@@ -118,4 +118,74 @@ public class ClienteDAO {
         }
      return listaCliente;
     }
+    public List<Cliente> BuscarClientecpf(String Busca) {
+        List<Cliente> listaCliente = new ArrayList<>();
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection Conexao = DriverManager.getConnection(URL, Login, Senha);
+            ResultSet rs = null;
+
+            PreparedStatement ComandoSQL = Conexao.prepareStatement("SELECT * FROM clientes WHERE cpf LIKE ?");
+            ComandoSQL.setString(1, "%"+ Busca +"%");
+            rs = ComandoSQL.executeQuery();
+
+            while (rs.next()) {
+                Cliente Cliente = new Cliente();
+
+                Cliente.setCPF(rs.getString("cpf"));
+                Cliente.setNome(rs.getString("nome_cliente"));
+                Cliente.setCelular(rs.getString("celular"));
+                Cliente.setEmail(rs.getString("email"));
+                Cliente.setDataNascimento(rs.getDate("data_nasc"));
+                Cliente.setGenero(rs.getString("genero"));
+                Cliente.setEstadoCivil(rs.getString("estado_civil"));
+                Cliente.setEndereco(rs.getString("lougradouro"));
+                Cliente.setBairro(rs.getString("bairro"));
+                Cliente.setCEP(rs.getString("cep"));
+                
+                
+                
+                listaCliente.add(Cliente);
+            }
+        } catch (ClassNotFoundException | SQLException erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        }
+     return listaCliente;
+    }
+    public List<Cliente> BuscarClienteNome(String Busca) {
+        List<Cliente> listaCliente = new ArrayList<>();
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection Conexao = DriverManager.getConnection(URL, Login, Senha);
+            ResultSet rs = null;
+
+            PreparedStatement ComandoSQL = Conexao.prepareStatement("SELECT * FROM clientes WHERE nome_cliente LIKE ?");
+            ComandoSQL.setString(1, "%"+ Busca +"%");
+            rs = ComandoSQL.executeQuery();
+
+            while (rs.next()) {
+                Cliente Cliente = new Cliente();
+
+                Cliente.setCPF(rs.getString("cpf"));
+                Cliente.setNome(rs.getString("nome_cliente"));
+                Cliente.setCelular(rs.getString("celular"));
+                Cliente.setEmail(rs.getString("email"));
+                Cliente.setDataNascimento(rs.getDate("data_nasc"));
+                Cliente.setGenero(rs.getString("genero"));
+                Cliente.setEstadoCivil(rs.getString("estado_civil"));
+                Cliente.setEndereco(rs.getString("lougradouro"));
+                Cliente.setBairro(rs.getString("bairro"));
+                Cliente.setCEP(rs.getString("cep"));
+                
+                
+                
+                listaCliente.add(Cliente);
+            }
+        } catch (ClassNotFoundException | SQLException erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        }
+     return listaCliente;
+    }
 }
