@@ -1,16 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author ciluc
- */
 package model;
 
 // @author cilucena
-public class Produto{
+import java.util.Date;
+
+public class Produto {
 
     private int idCod;
     private String nome;
@@ -21,25 +14,12 @@ public class Produto{
     private String marca;
     private int lucro;
     private String secao;
-    private String buscaProduto;
-    private int dataRecebimento;
+    private Date dataRecebimento;
+
     public Produto() {
     }
 
-    public Produto(int IdCod, String Nome, int Quantidade, int PcCompra, int PcVenda, String Fornecedor, String Marca, int lucro, String secao, String buscaProduto, int dataRecebimento) {
-
-        this.idCod = IdCod;
-        this.nome = Nome;
-        this.quantidade = Quantidade;
-        this.pcCompra = PcCompra;
-        this.pcVenda = PcVenda;
-        this.fornecedor = Fornecedor;
-        this.marca = Marca;
-        this.lucro = lucro;
-        this.secao = secao;
-        this.buscaProduto = buscaProduto;
-        this.dataRecebimento = dataRecebimento;
-    }
+  
 
     public int getIdCod() {
         return idCod;
@@ -113,20 +93,22 @@ public class Produto{
         this.secao = secao;
     }
 
-    public String getBuscaProduto() {
-        return buscaProduto;
-    }
-
-    public void setBuscaProduto(String buscaProduto) {
-        this.buscaProduto = buscaProduto;
-    }
-
-    public int getDataRecebimento() {
+    public Date getDataRecebimento() {
         return dataRecebimento;
     }
 
-    public void setDataRecebimento(int dataRecebimento) {
+    public void setDataRecebimento(Date dataRecebimento) {
         this.dataRecebimento = dataRecebimento;
     }
+
+    public void setIdCod(int i, int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+ 
+
+    
+        
+    
 
 }
