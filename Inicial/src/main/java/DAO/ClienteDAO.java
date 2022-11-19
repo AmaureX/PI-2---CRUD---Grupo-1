@@ -48,17 +48,18 @@ public class ClienteDAO {
             if (NumeroLinha > 0) {
                 Retorno = true;
             }
-            JOptionPane.showConfirmDialog(null, "Salvo com Sucesso!");
+            JOptionPane.showMessageDialog(null, "Salvo com Sucesso!");
         } catch (ClassNotFoundException | SQLException erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
         }
         return Retorno;
     }
+
     public static boolean Alterar(Cliente obj) {
         boolean Retorno = false;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection Conexao = DriverManager.getConnection(URL, Login, Senha); 
+            Connection Conexao = DriverManager.getConnection(URL, Login, Senha);
             PreparedStatement ComandoSQL = Conexao.prepareStatement("UPDATE clientes SET cpf = ?,nome_cliente = ? ,data_nasc = ? ,genero = ?,estado_civil = ?,lougradouro = ?,bairro = ?,cep = ? ,email = ?,celular = ? WHERE cpf = ?", Statement.RETURN_GENERATED_KEYS);
 
             ComandoSQL.setString(1, obj.getCPF());
@@ -108,16 +109,15 @@ public class ClienteDAO {
                 Cliente.setEndereco(rs.getString("lougradouro"));
                 Cliente.setBairro(rs.getString("bairro"));
                 Cliente.setCEP(rs.getString("cep"));
-                
-                
-                
+
                 listaCliente.add(Cliente);
             }
         } catch (ClassNotFoundException | SQLException erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
         }
-     return listaCliente;
+        return listaCliente;
     }
+
     public List<Cliente> BuscarClientecpf(String Busca) {
         List<Cliente> listaCliente = new ArrayList<>();
 
@@ -127,7 +127,7 @@ public class ClienteDAO {
             ResultSet rs = null;
 
             PreparedStatement ComandoSQL = Conexao.prepareStatement("SELECT * FROM clientes WHERE cpf LIKE ?");
-            ComandoSQL.setString(1, "%"+ Busca +"%");
+            ComandoSQL.setString(1, "%" + Busca + "%");
             rs = ComandoSQL.executeQuery();
 
             while (rs.next()) {
@@ -143,16 +143,15 @@ public class ClienteDAO {
                 Cliente.setEndereco(rs.getString("lougradouro"));
                 Cliente.setBairro(rs.getString("bairro"));
                 Cliente.setCEP(rs.getString("cep"));
-                
-                
-                
+
                 listaCliente.add(Cliente);
             }
         } catch (ClassNotFoundException | SQLException erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
         }
-     return listaCliente;
+        return listaCliente;
     }
+
     public List<Cliente> BuscarClienteNome(String Busca) {
         List<Cliente> listaCliente = new ArrayList<>();
 
@@ -162,7 +161,7 @@ public class ClienteDAO {
             ResultSet rs = null;
 
             PreparedStatement ComandoSQL = Conexao.prepareStatement("SELECT * FROM clientes WHERE nome_cliente LIKE ?");
-            ComandoSQL.setString(1, "%"+ Busca +"%");
+            ComandoSQL.setString(1, "%" + Busca + "%");
             rs = ComandoSQL.executeQuery();
 
             while (rs.next()) {
@@ -178,14 +177,33 @@ public class ClienteDAO {
                 Cliente.setEndereco(rs.getString("lougradouro"));
                 Cliente.setBairro(rs.getString("bairro"));
                 Cliente.setCEP(rs.getString("cep"));
-                
-                
-                
+
                 listaCliente.add(Cliente);
             }
         } catch (ClassNotFoundException | SQLException erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
         }
-     return listaCliente;
+        return listaCliente;
     }
+
+    public static boolean Excluir(String CPF) {
+        boolean Retorno = false;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection Conexao = DriverManager.getConnection(URL, Login, Senha);
+            PreparedStatement ComandoSQL = Conexao.prepareStatement("DELETE FROM clientes WHERE cpf = ?");
+
+            ComandoSQL.setString(1, CPF);
+
+            int NumeroLinha = ComandoSQL.executeUpdate();
+            if (NumeroLinha > 0) {
+                Retorno = true;
+            }
+            JOptionPane.showMessageDialog(null, "Excluido com Sucesso!");
+        } catch (ClassNotFoundException | SQLException erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        }
+        return Retorno;
+    }
+
 }

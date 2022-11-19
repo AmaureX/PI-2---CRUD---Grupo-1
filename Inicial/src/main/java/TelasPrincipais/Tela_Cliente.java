@@ -569,13 +569,17 @@ public class Tela_Cliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
-        // TODO add your handling code here:
+        int LinhaSelecionada = Tabela_Cliente.getSelectedRow();
+        String Cpf = Tabela_Cliente.getValueAt(LinhaSelecionada, 0).toString();
+        ClienteDAO.Excluir(Cpf);
+        ListarTabela();
+
     }//GEN-LAST:event_btExcluirActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         ArrayList<String> erros = new ArrayList();
-        ArrayList<String>ListaCliente = new ArrayList();
-        
+        ArrayList<String> ListaCliente = new ArrayList();
+
         lblNome.setForeground(Color.BLACK);
         lblCPF.setForeground(Color.BLACK);
         lblDataNascimento.setForeground(Color.BLACK);
@@ -649,16 +653,16 @@ public class Tela_Cliente extends javax.swing.JFrame {
             if (resposta == 0) {
                 try {
                     String Nome_cliente = txtNomeCliente.getText();
-                    String CPF = txtCPF.getText().replace(".", "").replace(".", "").replace("-","");
+                    String CPF = txtCPF.getText().replace(".", "").replace(".", "").replace("-", "");
                     Date DataNascimento = jdcDataNascimento.getDate();
                     String Genero = cbxGenero.getSelectedItem().toString();
                     String EstadoCivil = cbxEstadoCivil.getSelectedItem().toString();
                     String Logradouro = txtLogradouro.getText();
-                    String CEP = txtCEP.getText().replace("-","");
+                    String CEP = txtCEP.getText().replace("-", "");
                     String Bairro = txtBairro.getText();
-                    String Celular = txtCelular.getText().replace("(","").replace(")","").replace("-","");
+                    String Celular = txtCelular.getText().replace("(", "").replace(")", "").replace("-", "");
                     String Email = txtEmail.getText();
-                    
+
                     Cliente objCliente = new Cliente();
                     objCliente.setNome(Nome_cliente);
                     objCliente.setCPF(CPF);
@@ -670,18 +674,16 @@ public class Tela_Cliente extends javax.swing.JFrame {
                     objCliente.setBairro(Bairro);
                     objCliente.setCelular(Celular);
                     objCliente.setEmail(Email);
-                    
-                    
+
                     ClienteDAO salvarCliente = new ClienteDAO();
                     salvarCliente.Salvar(objCliente);
-                    
+
                     ListarTabela();
-                    limparCampos();
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(this, e);
-                
+
                 }
-                
+
             }
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
@@ -720,11 +722,11 @@ public class Tela_Cliente extends javax.swing.JFrame {
             if (!caracteres.contains(evt.getKeyChar() + "")) {
                 evt.consume();
             }
-            if(txtBusca.getText().length()>=11){
+            if (txtBusca.getText().length() >= 11) {
                 evt.consume();
-            } 
+            }
         }
-        
+
     }//GEN-LAST:event_txtBuscaKeyTyped
 
     private void btProcurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProcurarActionPerformed
@@ -733,19 +735,19 @@ public class Tela_Cliente extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Digite o nome do cliente para busca-lo");
             }
             BuscarporNome(txtBusca.getText());
-            return;         
+            return;
         }
         if (rbCPF.isSelected()) {
             if (txtBusca.getText().trim().equals("")) {
                 JOptionPane.showMessageDialog(this, "Digite o CPF do cliente para busca-lo");
             }
-            if (txtBusca.getText().trim().length() >12) {
+            if (txtBusca.getText().trim().length() > 12) {
                 JOptionPane.showMessageDialog(this, "Digite apenas os 11 digitos do CPF");
                 txtBusca.setText("");
             }
             BuscarporCPF(txtBusca.getText());
         }
-        String Procurar = txtBusca.getText(); 
+        String Procurar = txtBusca.getText();
     }//GEN-LAST:event_btProcurarActionPerformed
 
     private void mnuProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuProdutoActionPerformed
@@ -768,30 +770,29 @@ public class Tela_Cliente extends javax.swing.JFrame {
 
     private void BtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAlterarActionPerformed
         int LinhaSelecionada = Tabela_Cliente.getSelectedRow();
-        
+
         try {
-        txtCPF.setText(Tabela_Cliente.getModel().getValueAt(LinhaSelecionada,0).toString());
-        txtNomeCliente.setText(Tabela_Cliente.getModel().getValueAt(LinhaSelecionada,1).toString());
-        txtCelular.setText(Tabela_Cliente.getModel().getValueAt(LinhaSelecionada,2).toString());
-        txtEmail.setText(Tabela_Cliente.getModel().getValueAt(LinhaSelecionada,3).toString());
-        cbxGenero.setSelectedItem(Tabela_Cliente.getModel().getValueAt(LinhaSelecionada,5).toString());
-        cbxEstadoCivil.setSelectedItem(Tabela_Cliente.getModel().getValueAt(LinhaSelecionada,6).toString());
-        txtLogradouro.setText(Tabela_Cliente.getModel().getValueAt(LinhaSelecionada,7).toString());
-        txtBairro.setText(Tabela_Cliente.getModel().getValueAt(LinhaSelecionada,8).toString());
-        txtCEP.setText(Tabela_Cliente.getModel().getValueAt(LinhaSelecionada,9).toString());
+            txtCPF.setText(Tabela_Cliente.getModel().getValueAt(LinhaSelecionada, 0).toString());
+            txtNomeCliente.setText(Tabela_Cliente.getModel().getValueAt(LinhaSelecionada, 1).toString());
+            txtCelular.setText(Tabela_Cliente.getModel().getValueAt(LinhaSelecionada, 2).toString());
+            txtEmail.setText(Tabela_Cliente.getModel().getValueAt(LinhaSelecionada, 3).toString());
+            cbxGenero.setSelectedItem(Tabela_Cliente.getModel().getValueAt(LinhaSelecionada, 5).toString());
+            cbxEstadoCivil.setSelectedItem(Tabela_Cliente.getModel().getValueAt(LinhaSelecionada, 6).toString());
+            txtLogradouro.setText(Tabela_Cliente.getModel().getValueAt(LinhaSelecionada, 7).toString());
+            txtBairro.setText(Tabela_Cliente.getModel().getValueAt(LinhaSelecionada, 8).toString());
+            txtCEP.setText(Tabela_Cliente.getModel().getValueAt(LinhaSelecionada, 9).toString());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
         try {
-            Date data = new SimpleDateFormat("yyyy-MM-dd").parse((String)Tabela_Cliente.getValueAt(LinhaSelecionada,4));
+            Date data = new SimpleDateFormat("yyyy-MM-dd").parse((String) Tabela_Cliente.getValueAt(LinhaSelecionada, 4));
             jdcDataNascimento.setDate(data);
         } catch (ParseException e) {
             JOptionPane.showMessageDialog(null, e);
         }
 
-
         jTabbedPane1.setSelectedIndex(1);
- 
+
     }//GEN-LAST:event_BtnAlterarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
@@ -905,7 +906,7 @@ public class Tela_Cliente extends javax.swing.JFrame {
     private javax.swing.JTextField txtNomeCliente;
     // End of variables declaration//GEN-END:variables
 
-    public void limparCampos(){
+    public void limparCampos() {
         txtNomeCliente.setText("");
         txtCPF.setText("");
         txtLogradouro.setText("");
@@ -917,12 +918,13 @@ public class Tela_Cliente extends javax.swing.JFrame {
         txtCelular.setText("");
         jdcDataNascimento.setDate(null);
     }
-    public void ListarTabela(){
+
+    public void ListarTabela() {
         DefaultTableModel Modelo = (DefaultTableModel) Tabela_Cliente.getModel();
         Modelo.setNumRows(0);
         ClienteDAO clienteDAO = new ClienteDAO();
-        
-        for(Cliente cli: clienteDAO.ListarCliente()){
+
+        for (Cliente cli : clienteDAO.ListarCliente()) {
             Modelo.addRow(new String[]{
                 cli.getCPF(),
                 cli.getNome(),
@@ -933,17 +935,18 @@ public class Tela_Cliente extends javax.swing.JFrame {
                 cli.getEstadoCivil(),
                 cli.getEndereco(),
                 cli.getBairro(),
-                cli.getCEP()                   
+                cli.getCEP()
             });
-            
+
         }
     }
-    public void BuscarporNome(String Busca){
+
+    public void BuscarporNome(String Busca) {
         DefaultTableModel Modelo = (DefaultTableModel) Tabela_Cliente.getModel();
         Modelo.setNumRows(0);
         ClienteDAO clienteDAO = new ClienteDAO();
-        
-        for(Cliente cli: clienteDAO.BuscarClienteNome(Busca)){
+
+        for (Cliente cli : clienteDAO.BuscarClienteNome(Busca)) {
             Modelo.addRow(new String[]{
                 cli.getCPF(),
                 cli.getNome(),
@@ -954,17 +957,18 @@ public class Tela_Cliente extends javax.swing.JFrame {
                 cli.getEstadoCivil(),
                 cli.getEndereco(),
                 cli.getBairro(),
-                cli.getCEP()                   
+                cli.getCEP()
             });
-            
+
         }
     }
-    public void BuscarporCPF(String Busca){
+
+    public void BuscarporCPF(String Busca) {
         DefaultTableModel Modelo = (DefaultTableModel) Tabela_Cliente.getModel();
         Modelo.setNumRows(0);
         ClienteDAO clienteDAO = new ClienteDAO();
-        
-        for(Cliente cli: clienteDAO.BuscarClientecpf(Busca)){
+
+        for (Cliente cli : clienteDAO.BuscarClientecpf(Busca)) {
             Modelo.addRow(new String[]{
                 cli.getCPF(),
                 cli.getNome(),
@@ -975,47 +979,52 @@ public class Tela_Cliente extends javax.swing.JFrame {
                 cli.getEstadoCivil(),
                 cli.getEndereco(),
                 cli.getBairro(),
-                cli.getCEP()                   
+                cli.getCEP()
             });
-            
+
         }
     }
-public void OcultarCampos(){
-    Tabela_Cliente.getColumnModel().getColumn(6).setMinWidth(0);
-    Tabela_Cliente.getColumnModel().getColumn(6).setMaxWidth(0);
-    Tabela_Cliente.getColumnModel().getColumn(7).setMinWidth(0);
-    Tabela_Cliente.getColumnModel().getColumn(7).setMaxWidth(0);
-    Tabela_Cliente.getColumnModel().getColumn(8).setMinWidth(0);
-    Tabela_Cliente.getColumnModel().getColumn(8).setMaxWidth(0);
-    Tabela_Cliente.getColumnModel().getColumn(9).setMinWidth(0);
-    Tabela_Cliente.getColumnModel().getColumn(9).setMaxWidth(0);
-}
-private void alterarCliente(){
-     String Nome_cliente = txtNomeCliente.getText();
-                    String CPF = txtCPF.getText().replace(".", "").replace(".", "").replace("-","");
-                    Date DataNascimento = jdcDataNascimento.getDate();
-                    String Genero = cbxGenero.getSelectedItem().toString();
-                    String EstadoCivil = cbxEstadoCivil.getSelectedItem().toString();
-                    String Logradouro = txtLogradouro.getText();
-                    String CEP = txtCEP.getText().replace("-","");
-                    String Bairro = txtBairro.getText();
-                    String Celular = txtCelular.getText().replace("(","").replace(")","").replace("-","");
-                    String Email = txtEmail.getText();
-                    
-                    Cliente objCliente = new Cliente();
-                    objCliente.setNome(Nome_cliente);
-                    objCliente.setCPF(CPF);
-                    objCliente.setDataNascimento(DataNascimento);
-                    objCliente.setGenero(Genero);
-                    objCliente.setEstadoCivil(EstadoCivil);
-                    objCliente.setEndereco(Logradouro);
-                    objCliente.setCEP(CEP);
-                    objCliente.setBairro(Bairro);
-                    objCliente.setCelular(Celular);
-                    objCliente.setEmail(Email);
-                    
-                    
-                    ClienteDAO alterClienteDAO = new ClienteDAO();
-                    alterClienteDAO.Alterar(objCliente);
-}
+
+    public void OcultarCampos() {
+        Tabela_Cliente.getColumnModel().getColumn(6).setMinWidth(0);
+        Tabela_Cliente.getColumnModel().getColumn(6).setMaxWidth(0);
+        Tabela_Cliente.getColumnModel().getColumn(7).setMinWidth(0);
+        Tabela_Cliente.getColumnModel().getColumn(7).setMaxWidth(0);
+        Tabela_Cliente.getColumnModel().getColumn(8).setMinWidth(0);
+        Tabela_Cliente.getColumnModel().getColumn(8).setMaxWidth(0);
+        Tabela_Cliente.getColumnModel().getColumn(9).setMinWidth(0);
+        Tabela_Cliente.getColumnModel().getColumn(9).setMaxWidth(0);
+    }
+
+    private void alterarCliente() {
+        try{
+        String Nome_cliente = txtNomeCliente.getText();
+        String CPF = txtCPF.getText().replace(".", "").replace(".", "").replace("-", "");
+        Date DataNascimento = jdcDataNascimento.getDate();
+        String Genero = cbxGenero.getSelectedItem().toString();
+        String EstadoCivil = cbxEstadoCivil.getSelectedItem().toString();
+        String Logradouro = txtLogradouro.getText();
+        String CEP = txtCEP.getText().replace("-", "");
+        String Bairro = txtBairro.getText();
+        String Celular = txtCelular.getText().replace("(", "").replace(")", "").replace("-", "");
+        String Email = txtEmail.getText();
+
+        Cliente objCliente = new Cliente();
+        objCliente.setNome(Nome_cliente);
+        objCliente.setCPF(CPF);
+        objCliente.setDataNascimento(DataNascimento);
+        objCliente.setGenero(Genero);
+        objCliente.setEstadoCivil(EstadoCivil);
+        objCliente.setEndereco(Logradouro);
+        objCliente.setCEP(CEP);
+        objCliente.setBairro(Bairro);
+        objCliente.setCelular(Celular);
+        objCliente.setEmail(Email);
+
+        ClienteDAO alterClienteDAO = new ClienteDAO();
+        alterClienteDAO.Alterar(objCliente);
+        }catch(Exception erro){
+            JOptionPane.showMessageDialog(null, erro);
+        }
+    }
 }
