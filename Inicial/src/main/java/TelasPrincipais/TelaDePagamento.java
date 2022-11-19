@@ -71,7 +71,7 @@ public class TelaDePagamento extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jdcDataVenda = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
-        lblCodVenda = new javax.swing.JLabel();
+        lblCodPag = new javax.swing.JLabel();
 
         jLabel4.setText("Quantidade de Parcelas:");
 
@@ -355,11 +355,11 @@ public class TelaDePagamento extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Identificação da Venda")));
 
-        jLabel1.setText("Codigo da Venda: ");
+        jLabel1.setText("Codigo da Nota: ");
 
         jLabel2.setText("Data da Venda:");
 
-        lblCodVenda.setText("0");
+        lblCodPag.setText("0");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -371,7 +371,7 @@ public class TelaDePagamento extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblCodVenda))
+                        .addComponent(lblCodPag))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
@@ -384,7 +384,7 @@ public class TelaDePagamento extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(lblCodVenda))
+                    .addComponent(lblCodPag))
                 .addGap(16, 16, 16)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
@@ -497,7 +497,7 @@ public class TelaDePagamento extends javax.swing.JFrame {
         }
             
         try {
-        int cod = Integer.parseInt(lblCodVenda.getText());
+        int cod = Integer.parseInt(lblCodPag.getText());
         Date data = jdcDataVenda.getDate();
         String nome = txtCliente.getText();
         String cpf = txtCpfCliente.getText().replace(".", "").replace(".", "").replace("-","");
@@ -513,8 +513,8 @@ public class TelaDePagamento extends javax.swing.JFrame {
         
         Pagamento objPagamento = new Pagamento();
         
-        objPagamento.setCodVenda(cod);
-        //objPagamento.setDataVenda(data);
+        objPagamento.setCodPag(cod);
+        objPagamento.setDataVenda(data);
         objPagamento.setNomeCliente(nome);
         objPagamento.setCpfCliente(cpf);
         objPagamento.setTipoPagamento(tipoPag);
@@ -555,10 +555,11 @@ public class TelaDePagamento extends javax.swing.JFrame {
         }
 
         if (boxTipoPag.getSelectedItem().equals("Dinheiro")) {
-            txtTroco.setEnabled(true);
+            txtTroco.setEditable(true);
 
         } else {
-            txtTroco.setEnabled(false);
+            txtTroco.setEditable(false);
+            txtTroco.setText("0.0");
         }
 
     }//GEN-LAST:event_boxTipoPagActionPerformed
@@ -570,7 +571,7 @@ public class TelaDePagamento extends javax.swing.JFrame {
                 || boxQntParcelas.getSelectedItem().equals("5x")
                 || boxQntParcelas.getSelectedItem().equals("6x")) {
 
-            txtJuros.setEditable(false);
+            
 
             double valorTotal = Double.parseDouble(txtValorTotal.getText());
             double juros = valorTotal * 0.05;
@@ -723,7 +724,7 @@ public class TelaDePagamento extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private com.toedter.calendar.JDateChooser jdcDataVenda;
     private javax.swing.JLabel lblCliente;
-    private javax.swing.JLabel lblCodVenda;
+    private javax.swing.JLabel lblCodPag;
     private javax.swing.JLabel lblCpfCliente;
     private javax.swing.JLabel lblDesconto;
     private javax.swing.JLabel lblJuros;

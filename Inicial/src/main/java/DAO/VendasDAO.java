@@ -26,23 +26,31 @@ public class VendasDAO {
 
     public static boolean Salvar(Pagamento obj) {
         boolean retorno = false;
+        Integer generatedID = null;
+
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conexao = DriverManager.getConnection(URL, login, senha);
 
             for (Vendas item : obj.getListaItens()) {
-                PreparedStatement ComandoSQLItem = conexao.prepareStatement("INSERT INTO vendas (cod_produto,"
-                        + "nome_produto, quantidade, valor_unitario, valor_total) VALUES (?,?,?,?,?)");
-                ComandoSQLItem.setInt(1, item.getCodProduto());
-                ComandoSQLItem.setString(2, item.getNomeProduto());
-                ComandoSQLItem.setInt(3, item.getQuantidade());
+                
+                PreparedStatement ComandoSQLItem;
+                ComandoSQLItem = conexao.prepareStatement("INSERT INTO vendas (quantidade,"
+                        + "cod_produto, nome_pruduto, valor_unitario, valor_total) VALUES (?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+                ComandoSQLItem.setInt(1, item.getQuantidade());
+                 ComandoSQLItem.setInt(2, item.getCodProduto());
+                ComandoSQLItem.setString(3, item.getNomeProduto());
                 ComandoSQLItem.setDouble(4, item.getValorUnitario());
                 ComandoSQLItem.setDouble(5, item.getValorTotal());
 
                 int linhasAfetadasItem = ComandoSQLItem.executeUpdate();
 
                 if (linhasAfetadasItem > 0) {
+                     ResultSet rs = ComandoSQLItem.getGeneratedKeys();
+                if (rs.next()) {
+                    generatedID = rs.getInt(1);
+                }
 
                     retorno = true;
 

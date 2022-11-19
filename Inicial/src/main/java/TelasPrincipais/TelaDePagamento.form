@@ -481,7 +481,7 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblCodVenda" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCodPag" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
@@ -499,7 +499,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblCodVenda" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCodPag" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -514,7 +514,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Codigo da Venda: "/>
+            <Property name="text" type="java.lang.String" value="Codigo da Nota: "/>
           </Properties>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jdcDataVenda">
@@ -524,7 +524,7 @@
             <Property name="text" type="java.lang.String" value="Data da Venda:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblCodVenda">
+        <Component class="javax.swing.JLabel" name="lblCodPag">
           <Properties>
             <Property name="text" type="java.lang.String" value="0"/>
           </Properties>
