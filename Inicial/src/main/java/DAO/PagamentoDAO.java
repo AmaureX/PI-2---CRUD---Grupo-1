@@ -15,6 +15,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import model.Cliente;
 import model.Pagamento;
+import model.Produto;
 
 /**
  *
@@ -66,9 +67,9 @@ public class PagamentoDAO {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection Conexao = DriverManager.getConnection(URL, Login, Senha);
 
-            PreparedStatement ComandoSQL = Conexao.prepareStatement(("SELECT * FROM clientes WHERE cpf= ?"), 
+            PreparedStatement ComandoSQL = Conexao.prepareStatement(("SELECT * FROM clientes WHERE cpf = ?"),
                     ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-           Cliente c = new Cliente();
+            Cliente c = new Cliente();
             ComandoSQL.setString(1, cpf);
             ResultSet rs = ComandoSQL.executeQuery();
 
@@ -76,13 +77,12 @@ public class PagamentoDAO {
             c.setCPF(rs.getString("cpf"));
             c.setNome(rs.getString("nome_cliente"));
 
-            
-                return c;
-            
+            return c;
+
         } catch (ClassNotFoundException | SQLException erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
         }
-return null;
+        return null;
     }
 
 }

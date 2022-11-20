@@ -379,6 +379,11 @@ public class Tela_Produto extends javax.swing.JFrame {
         lblPcCompra.setText("Preço Compra:");
 
         txtPcCompra.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtPcCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPcCompraActionPerformed(evt);
+            }
+        });
         txtPcCompra.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtPcCompraKeyPressed(evt);
@@ -831,7 +836,8 @@ public class Tela_Produto extends javax.swing.JFrame {
     private void txtPcCompraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPcCompraKeyTyped
         char c = evt.getKeyChar();
 
-        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE) && (c != KeyEvent.VK_ENTER) && (c != KeyEvent.VK_DELETE)) {
+        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE) && (c != KeyEvent.VK_ENTER) &&
+                (c != KeyEvent.VK_DELETE) && c != KeyEvent.VK_PERIOD) {
             evt.consume();
             JOptionPane.showMessageDialog(this, "Digite apenas números!");
             txtPcCompra.setText("");
@@ -944,6 +950,10 @@ public class Tela_Produto extends javax.swing.JFrame {
     private void txtBuscaProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaProdutoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscaProdutoActionPerformed
+
+    private void txtPcCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPcCompraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPcCompraActionPerformed
 
     /**
      * @param args the command line arguments

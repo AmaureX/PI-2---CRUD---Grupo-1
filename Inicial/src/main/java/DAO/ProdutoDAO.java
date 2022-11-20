@@ -26,9 +26,9 @@ import model.Produto;
  */
 public class ProdutoDAO {
 
-    public static String url = "jdbc:mysql://localhost:3306/teste_tela_produto";
+    public static String url = "jdbc:mysql://localhost:3306/teste";
     public static String login = "root";
-    public static String senha = "Cacajuju14.";
+    public static String senha = "root";
 
     public static boolean salvar(Produto obj) {
         boolean retorno = false;
@@ -37,7 +37,8 @@ public class ProdutoDAO {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conexao = DriverManager.getConnection(url, login, senha);
             retorno = true;
-            PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO Produto (nome_produto,marca, secao, quantidade, preco_compra, lucro, fornecedor,preco_venda, data_recebimento) VALUES (?,?,?,?,?,?,?,?,?)",
+            PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO produtos (nome_produto,marca, "
+                    + "secao, quantidade, preco_compra, lucro, fornecedor,preco_venda, data_recebimento) VALUES (?,?,?,?,?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
 
             comandoSQL.setString(1, obj.getNome());
