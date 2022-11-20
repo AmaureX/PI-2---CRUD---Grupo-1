@@ -4,6 +4,8 @@
  */
 package DAO;
 
+import static DAO.ClienteDAO.Login;
+import static DAO.ClienteDAO.Senha;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import model.Cliente;
 import model.Pagamento;
 
 /**
@@ -42,7 +45,7 @@ public class PagamentoDAO {
             ComandoSQL.setString(7, obj.getParcelamento());
             ComandoSQL.setString(8, obj.getNomeCliente());
             ComandoSQL.setString(9, obj.getCpfCliente());
-            ComandoSQL.setDate(10, new  java.sql.Date(obj.getDataVenda().getTime()));
+            ComandoSQL.setDate(10, new java.sql.Date(obj.getDataVenda().getTime()));
 
             int linhasAfetadas = ComandoSQL.executeUpdate();
             if (linhasAfetadas > 0) {
@@ -56,4 +59,30 @@ public class PagamentoDAO {
         }
         return retorno;
     }
+
+    public Cliente PesquisarCliente(String cpf) {
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection Conexao = DriverManager.getConnection(URL, Login, Senha);
+
+            PreparedStatement ComandoSQL = Conexao.prepareStatement(("SELECT * FROM clientes WHERE cpf= ?"), 
+                    ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+           Cliente c = new Cliente();
+            ComandoSQL.setString(1, cpf);
+            ResultSet rs = ComandoSQL.executeQuery();
+
+            rs.first();
+            c.setCPF(rs.getString("cpf"));
+            c.setNome(rs.getString("nome_cliente"));
+
+            
+                return c;
+            
+        } catch (ClassNotFoundException | SQLException erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        }
+return null;
+    }
+
 }
