@@ -139,21 +139,37 @@ public class Tela_principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Chama a tela de produtos
+     * @param evt 
+     */
     private void btnProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutoActionPerformed
         Tela_Produto produto = new Tela_Produto();
         produto.setVisible(true);
     }//GEN-LAST:event_btnProdutoActionPerformed
 
+    /**
+     * Chama a tela de clientes
+     * @param evt 
+     */
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
         Tela_Cliente cliente = new Tela_Cliente();
         cliente.setVisible(true);
     }//GEN-LAST:event_btnClienteActionPerformed
 
+    /**
+     * Chama a tela de vendas
+     * @param evt 
+     */
     private void btnVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaActionPerformed
         TelaDeVendas venda = new TelaDeVendas();
         venda.setVisible(true);
     }//GEN-LAST:event_btnVendaActionPerformed
 
+    /**
+     * Chama a tela de relatórios
+     * @param evt 
+     */
     private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
         Tela_Relatorio.TelaRelatorioSintetico relatorio = new TelaRelatorioSintetico();
         relatorio.setVisible(true);

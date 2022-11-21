@@ -27,6 +27,10 @@ public class TelaDeVendas extends javax.swing.JFrame {
         initComponents();
     }
 
+    /**
+     * função que habilita os campos necessários
+     * @param evt 
+     */
     private void habilitarCampos(boolean status) {
         btnIniciar.setEnabled(!status);
         btnConcluir.setEnabled(status);
@@ -41,6 +45,10 @@ public class TelaDeVendas extends javax.swing.JFrame {
 
     }
 
+    /**
+     * Função que limpa os campos de texto
+     * @param evt 
+     */
     private void limpaCampos() {
         txtCodProd.setText("");
         txtNomeProd.setText("");
@@ -48,6 +56,10 @@ public class TelaDeVendas extends javax.swing.JFrame {
         txtValorUnit.setText("");
     }
 
+    /**
+     * Função que demonstra o valor total
+     * @param status 
+     */
     private void Total(boolean status) {
         double valorTotal = 0;
         int cont = tblItens.getRowCount();
@@ -611,6 +623,10 @@ public class TelaDeVendas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Função que inicia a colocação das informações
+     * @param evt 
+     */
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         habilitarCampos(true);
         limpaCampos();
@@ -618,10 +634,18 @@ public class TelaDeVendas extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnIniciarActionPerformed
 
+    /**
+     * Inverso aos btnIniciarActionPerfomed 
+     * @param evt 
+     */
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         habilitarCampos(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    /**
+     * Função que conclui a venda usando o botão Concluir
+     * @param evt 
+     */
     private void btnConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConcluirActionPerformed
 
         if (tblItens.getRowCount() == 0) {
@@ -686,6 +710,10 @@ public class TelaDeVendas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtValorUnitActionPerformed
 
+    /**
+     * Método de validação do botão AdicionarItem
+     * @param evt 
+     */
     private void btnAdicionarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarItemActionPerformed
         if (txtCodProd.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(this, "Digite o código do produto");
@@ -732,13 +760,17 @@ public class TelaDeVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdicionarItemActionPerformed
 
     private void txtNomeProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeProdActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtNomeProdActionPerformed
 
     private void btnIniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciarMouseClicked
 
     }//GEN-LAST:event_btnIniciarMouseClicked
 
+    /**
+     * Método de validação do botão Busca
+     * @param evt 
+     */
     private void btnBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaActionPerformed
         if (txtCodProd.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(this, "Digite o código do produto para busca-lo");
@@ -760,11 +792,19 @@ public class TelaDeVendas extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnBuscaActionPerformed
 
+    /**
+     * Função que chama a tela de produtos
+     * @param evt 
+     */
     private void mnuprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuprodutoActionPerformed
         Tela_Produto Produto = new Tela_Produto();
         Produto.setVisible(true);
     }//GEN-LAST:event_mnuprodutoActionPerformed
 
+    /**
+     * Função que chama a tela de clientes
+     * @param evt 
+     */
     private void mnuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuClienteActionPerformed
         Tela_Cliente Cliente = new Tela_Cliente();
         Cliente.setVisible(true);
@@ -775,6 +815,10 @@ public class TelaDeVendas extends javax.swing.JFrame {
         Total(false);
     }//GEN-LAST:event_btnExcluirItemActionPerformed
 
+    /**
+     * Método de validação do campo de texto CodProd
+     * @param evt 
+     */
     private void txtCodProdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodProdKeyTyped
         char c = evt.getKeyChar();
         if ((c < '0' || c > '9') && (c != KeyEvent.VK_BACK_SPACE && c != KeyEvent.VK_DELETE
@@ -787,6 +831,10 @@ public class TelaDeVendas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtCodProdKeyTyped
 
+    /**
+     * Método de validação do campo de texto Qnt
+     * @param evt 
+     */
     private void txtQntKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQntKeyTyped
         char c = evt.getKeyChar();
         if ((c < '0' || c > '9') && (c != KeyEvent.VK_BACK_SPACE && c != KeyEvent.VK_DELETE
@@ -800,9 +848,13 @@ public class TelaDeVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtQntKeyTyped
 
     private void txtClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClienteActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtClienteActionPerformed
 
+    /**
+     * Função que busca um cliente já cadastrado
+     * @param evt 
+     */
     private void btnBuscarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCliActionPerformed
 
         String cpf = txtCpfCliente.getText().replace(".", "").replace(".", "").replace("-", "");
@@ -819,6 +871,10 @@ public class TelaDeVendas extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtCpfClienteActionPerformed
 
+    /**
+     * Método de validação do campo de texto CpfCliente
+     * @param evt 
+     */
     private void txtCpfClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCpfClienteKeyTyped
         char c = evt.getKeyChar();
         if ((c < '0' || c > '9') && (c != KeyEvent.VK_BACK_SPACE && c != KeyEvent.VK_DELETE
@@ -831,6 +887,10 @@ public class TelaDeVendas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtCpfClienteKeyTyped
 
+    /**
+     * Função que mostra os tipos de pagamentos possíveis
+     * @param evt 
+     */
     private void boxTipoPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxTipoPagActionPerformed
 
             if (boxTipoPag.getSelectedItem().equals("Cartão de Crédito Parcelado")) {

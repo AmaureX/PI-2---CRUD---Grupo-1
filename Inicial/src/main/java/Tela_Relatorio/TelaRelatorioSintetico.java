@@ -160,12 +160,20 @@ public class TelaRelatorioSintetico extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Chama a tela de relatório analítico
+     * @param evt 
+     */
     private void btnDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalhesActionPerformed
         TelaRelatorioAnalitico telaRelatorio1 = new TelaRelatorioAnalitico();
         telaRelatorio1.setVisible(true);
 
     }//GEN-LAST:event_btnDetalhesActionPerformed
 
+    /**
+     * Faz a busca dos dados das vendas e mostra na tabela
+     * @param evt 
+     */
     private void btnBuscarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarRelatorioActionPerformed
         ArrayList<Relatorio> lista = RelatorioDAO.listar();
 
@@ -184,6 +192,11 @@ public class TelaRelatorioSintetico extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnBuscarRelatorioActionPerformed
+    
+    /**
+     * Mostra o valor total
+     * @param evt 
+     */
     private void Total(boolean status) {
         double valorTotal = 0;
         int cont = tblRelatorio.getRowCount();

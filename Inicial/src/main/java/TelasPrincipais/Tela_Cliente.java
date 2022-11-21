@@ -567,7 +567,10 @@ public class Tela_Cliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * Permite excluir um cliente já cadastrado
+ * @param evt 
+ */
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         int LinhaSelecionada = Tabela_Cliente.getSelectedRow();
         String Cpf = Tabela_Cliente.getValueAt(LinhaSelecionada, 0).toString();
@@ -575,7 +578,10 @@ public class Tela_Cliente extends javax.swing.JFrame {
         ListarTabela();
 
     }//GEN-LAST:event_btExcluirActionPerformed
-
+/**
+ * Salva todas as informações colocadas nas lables para cadastrar o cliente
+ * @param evt 
+ */
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         ArrayList<String> erros = new ArrayList();
         ArrayList<String> ListaCliente = new ArrayList();
@@ -687,27 +693,39 @@ public class Tela_Cliente extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
-
+/**
+ * Método de validação para o campo de texto Nome
+ * @param evt 
+ */
     private void txtNomeClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeClienteKeyTyped
         if (txtNomeCliente.getText().length() >= 100) {
             evt.consume();
             JOptionPane.showMessageDialog(this, "Número máximo de caracteres digitados!");
         }
     }//GEN-LAST:event_txtNomeClienteKeyTyped
-
+/**
+ * Permite fazer novos cadastros
+ * @param evt 
+ */
     private void btNovoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoCadastroActionPerformed
         jTabbedPane1.setEnabledAt(1, true);
         jTabbedPane1.setSelectedIndex(1);
         btnAlterarCliente.setEnabled(false);
     }//GEN-LAST:event_btNovoCadastroActionPerformed
-
+/**
+ * Método de validação para o campo de texto Logradouro
+ * @param evt 
+ */
     private void txtLogradouroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLogradouroKeyTyped
         if (txtLogradouro.getText().length() >= 50) {
             evt.consume();
             JOptionPane.showMessageDialog(this, "Número máximo de caracteres digitados!");
         }
     }//GEN-LAST:event_txtLogradouroKeyTyped
-
+/**
+ * Método de validação para o campo de texto Busca
+ * @param evt 
+ */
     private void txtBuscaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscaKeyTyped
         if (rbNome.isSelected()) {
 
@@ -729,7 +747,10 @@ public class Tela_Cliente extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_txtBuscaKeyTyped
-
+/**
+ * Método de validação para o botão Procurar
+ * @param evt 
+ */
     private void btProcurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProcurarActionPerformed
         if (rbNome.isSelected()) {
             if (txtBusca.getText().trim().equals("")) {
@@ -751,21 +772,37 @@ public class Tela_Cliente extends javax.swing.JFrame {
         String Procurar = txtBusca.getText();
     }//GEN-LAST:event_btProcurarActionPerformed
 
+    /**
+     * Mostra a tela de produtos
+     * @param evt 
+     */
     private void mnuProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuProdutoActionPerformed
         Tela_Produto Produto1 = new Tela_Produto();
         Produto1.setVisible(true);
     }//GEN-LAST:event_mnuProdutoActionPerformed
 
+    /**
+     * Mostra a tela de vendas
+     * @param evt 
+     */
     private void mnuVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuVendaActionPerformed
         TelaDeVendas Venda = new TelaDeVendas();
         Venda.setVisible(true);
     }//GEN-LAST:event_mnuVendaActionPerformed
 
+    /**
+     * Mostra o relatório sintético
+     * @param evt 
+     */
     private void mnuSinteticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuSinteticoActionPerformed
         Tela_Relatorio.TelaRelatorioSintetico relatorio = new TelaRelatorioSintetico();
         relatorio.setVisible(true);
     }//GEN-LAST:event_mnuSinteticoActionPerformed
 
+    /**
+     * Função que indica qual linha do cliente você quer alterar
+     * @param evt 
+     */
     private void BtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAlterarActionPerformed
         int LinhaSelecionada = Tabela_Cliente.getSelectedRow();
         btnAlterarCliente.setEnabled(true);
@@ -793,10 +830,18 @@ public class Tela_Cliente extends javax.swing.JFrame {
 
     }//GEN-LAST:event_BtnAlterarActionPerformed
 
+    /**
+     * Chama a função limparCampos
+     * @param evt 
+     */
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         limparCampos();
     }//GEN-LAST:event_btnLimparActionPerformed
 
+    /**
+     * Método de validação para o campo de texto Bairro
+     * @param evt 
+     */
     private void txtBairroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBairroKeyTyped
         if (txtBairro.getText().length() >= 50) {
             evt.consume();
@@ -804,12 +849,20 @@ public class Tela_Cliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtBairroKeyTyped
 
+    /**
+     * Função que chama outras funções para conseguir alterar um cliente já cadastrado
+     * @param evt 
+     */
     private void btnAlterarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarClienteActionPerformed
         alterarCliente();
         ListarTabela();
         limparCampos();
     }//GEN-LAST:event_btnAlterarClienteActionPerformed
 
+    /**
+     * Função que chama a tela principal
+     * @param evt 
+     */
     private void mnuTelaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuTelaPrincipalActionPerformed
         Tela_principal principal = new Tela_principal();
         principal.setVisible(true);
@@ -906,6 +959,9 @@ public class Tela_Cliente extends javax.swing.JFrame {
     private javax.swing.JTextField txtNomeCliente;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Função que consegue limpar os campos de criação do cliente
+     */
     public void limparCampos() {
         txtNomeCliente.setText("");
         txtCPF.setText("");
@@ -919,6 +975,9 @@ public class Tela_Cliente extends javax.swing.JFrame {
         jdcDataNascimento.setDate(null);
     }
 
+    /**
+     * Função que mostra uma tabela com os clientes de acordo com o CPF ou o nome no campo de busca
+     */
     public void ListarTabela() {
         DefaultTableModel Modelo = (DefaultTableModel) Tabela_Cliente.getModel();
         Modelo.setNumRows(0);
@@ -941,6 +1000,10 @@ public class Tela_Cliente extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Função que utiliza o nome para buscar um cliente já cadastrado
+     * @param Busca 
+     */
     public void BuscarporNome(String Busca) {
         DefaultTableModel Modelo = (DefaultTableModel) Tabela_Cliente.getModel();
         Modelo.setNumRows(0);
@@ -962,7 +1025,11 @@ public class Tela_Cliente extends javax.swing.JFrame {
 
         }
     }
-
+    
+    /**
+     * Função que utiliza o CPF para buscar um cliente já cadastrado
+     * @param Busca 
+     */
     public void BuscarporCPF(String Busca) {
         DefaultTableModel Modelo = (DefaultTableModel) Tabela_Cliente.getModel();
         Modelo.setNumRows(0);
@@ -985,6 +1052,9 @@ public class Tela_Cliente extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Função que oculta alguns campos da tabela de clientes
+     */
     public void OcultarCampos() {
         Tabela_Cliente.getColumnModel().getColumn(6).setMinWidth(0);
         Tabela_Cliente.getColumnModel().getColumn(6).setMaxWidth(0);
@@ -995,7 +1065,10 @@ public class Tela_Cliente extends javax.swing.JFrame {
         Tabela_Cliente.getColumnModel().getColumn(9).setMinWidth(0);
         Tabela_Cliente.getColumnModel().getColumn(9).setMaxWidth(0);
     }
-
+    
+    /**
+     * Função que permite alterar um cliente já cadastrado
+     */
     private void alterarCliente() {
         try{
         String Nome_cliente = txtNomeCliente.getText();

@@ -33,6 +33,10 @@ public class Tela_Produto extends javax.swing.JFrame {
         //this.setLocationRelativeTo(null);
     }
 
+    /**
+     * Função que deixa as lables na cor preta
+     * @param evt 
+     */
     private void corLabel() {
         lblNome.setForeground(Color.black);
         lblQuantidade.setForeground(Color.black);
@@ -46,6 +50,10 @@ public class Tela_Produto extends javax.swing.JFrame {
 
     }
 
+    /**
+     * Função que limpa os campos 
+     * @param evt 
+     */
     private void limparTexto() {
 
         txtBuscaProduto.setText("");
@@ -672,17 +680,29 @@ public class Tela_Produto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Chama a tela de clientes
+     * @param evt 
+     */
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         Tela_Cliente cliente = new Tela_Cliente();
         cliente.setVisible(true);
 
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    /**
+     * Chama a tela de vendas
+     * @param evt 
+     */
     private void mnuVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuVendaActionPerformed
         TelaDeVendas venda = new TelaDeVendas();
         venda.setVisible(true);
     }//GEN-LAST:event_mnuVendaActionPerformed
 
+    /**
+     * Método de validação do campo de texto Busca
+     * @param evt 
+     */
     private void txtBuscaProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscaProdutoKeyTyped
         if (rbnNome.isSelected()) {
 
@@ -703,6 +723,10 @@ public class Tela_Produto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtBuscaProdutoKeyTyped
 
+    /**
+     * Método de validação do botão Pesquisar
+     * @param evt 
+     */
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         
         if (rbnNome.isSelected()) {
@@ -727,18 +751,30 @@ public class Tela_Produto extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
+    /**
+     * Mostra a tela de produtos
+     * @param evt 
+     */
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
         tpProduto.setEnabledAt(1, true);
         tpProduto.setSelectedIndex(1);
 
     }//GEN-LAST:event_btnCadastroActionPerformed
 
+    /**
+     * Função que faz a pesquisa dos produtos
+     * @param evt 
+     */
     private void txtBuscaProdutoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscaProdutoKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btnPesquisar.requestFocus();
         }
     }//GEN-LAST:event_txtBuscaProdutoKeyPressed
 
+    /**
+     * Método de validação do botão Salvar e também salva os produtos
+     * @param evt 
+     */
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         ArrayList<String> erros = new ArrayList();
 
@@ -843,6 +879,10 @@ public class Tela_Produto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
 
+    /**
+     * Método de validação do campo de texto Nome
+     * @param evt 
+     */
     private void txtNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyTyped
         if (txtNome.getText().length() >= 60) {
             evt.consume();
@@ -850,6 +890,10 @@ public class Tela_Produto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtNomeKeyTyped
 
+    /**
+     * Método de validação do campo de texto Lucro
+     * @param evt 
+     */
     private void txtLucroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLucroKeyTyped
         char c = evt.getKeyChar();
 
@@ -860,6 +904,10 @@ public class Tela_Produto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtLucroKeyTyped
 
+    /**
+     * Método de validação do campo de texto Quantidade
+     * @param evt 
+     */
     private void txtQuantidadeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQuantidadeKeyTyped
         char c = evt.getKeyChar();
 
@@ -870,6 +918,10 @@ public class Tela_Produto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtQuantidadeKeyTyped
 
+    /**
+     * Faz a conta do lucro obtido
+     * @param evt 
+     */
     private void txtLucroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLucroActionPerformed
         double cent = 0.00, rst = 0.00;
         try {
@@ -884,6 +936,10 @@ public class Tela_Produto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtLucroActionPerformed
 
+    /**
+     * Faz a conta do lucro obtido
+     * @param evt 
+     */
     private void txtLucroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtLucroMouseExited
         double cent = 0.00, rst = 0.00;
         try {
@@ -898,6 +954,10 @@ public class Tela_Produto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtLucroMouseExited
 
+    /**
+     * Método de validação do campo de texto PcCompra
+     * @param evt 
+     */
     private void txtPcCompraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPcCompraKeyTyped
         char c = evt.getKeyChar();
 
@@ -909,42 +969,70 @@ public class Tela_Produto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtPcCompraKeyTyped
 
+    /**
+     * Deixa em foco o campo de texto PcCompra
+     * @param evt 
+     */
     private void txtPcCompraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPcCompraKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txtLucro.requestFocus();
         }
     }//GEN-LAST:event_txtPcCompraKeyPressed
 
+    /**
+     * Deixa em foco o campo de texto Nome
+     * @param evt 
+     */
     private void txtNomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txtMarca.requestFocus();
         }
     }//GEN-LAST:event_txtNomeKeyPressed
 
+    /**
+     * Deixa em foco o campo de texto Marca
+     * @param evt 
+     */
     private void txtMarcaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMarcaKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             cbxSecao.requestFocus();
         }
     }//GEN-LAST:event_txtMarcaKeyPressed
 
+    /**
+     * Deixa em foco o combobox Secao
+     * @param evt 
+     */
     private void cbxSecaoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbxSecaoKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txtQuantidade.requestFocus();
         }
     }//GEN-LAST:event_cbxSecaoKeyPressed
 
+    /**
+     * Deixa em foco o campo de texto Lucro
+     * @param evt 
+     */
     private void txtLucroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLucroKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             cbxFornecedor.requestFocus();
         }
     }//GEN-LAST:event_txtLucroKeyPressed
 
+    /**
+     * Deixa em foco o combobox Fornecedor
+     * @param evt 
+     */
     private void cbxFornecedorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbxFornecedorKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             jdcDataRecebimento.requestFocus();
         }
     }//GEN-LAST:event_cbxFornecedorKeyPressed
 
+    /**
+     * Salva o produto
+     * @param evt 
+     */
     private void btnSalvarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSalvarKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             JOptionPane.showConfirmDialog(null, "Deseja Salvar?", "Mensagem", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -961,6 +1049,10 @@ public class Tela_Produto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSalvarKeyPressed
 
+    /**
+     * Metódo de validação do campo de texto Marca
+     * @param evt 
+     */
     private void txtMarcaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMarcaKeyTyped
         if (txtMarca.getText().length() >= 30) {
             evt.consume();
@@ -968,12 +1060,20 @@ public class Tela_Produto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtMarcaKeyTyped
 
+    /**
+     * Deixa em foco o campo de texto Quantidade
+     * @param evt 
+     */
     private void txtQuantidadeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQuantidadeKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             txtPcCompra.requestFocus();
         }
     }//GEN-LAST:event_txtQuantidadeKeyPressed
 
+    /**
+     * Altera o produto selecionado
+     * @param evt 
+     */
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         int LinhaSelecionada = tblProduto.getSelectedRow();
 
@@ -1003,6 +1103,10 @@ public class Tela_Produto extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnAlterarActionPerformed
 
+    /**
+     * Exclui o produto selecionado
+     * @param evt 
+     */
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         int linhaSelecionada = tblProduto.getSelectedRow();
         String cod = tblProduto.getValueAt(linhaSelecionada, 0).toString();
@@ -1011,6 +1115,10 @@ public class Tela_Produto extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnExcluirActionPerformed
 
+    /**
+     * Metodo de validação para o radiobutton Codigo
+     * @param evt 
+     */
     private void rbnCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rbnCodigoKeyTyped
         if (rbnCodigo.getText().length() >= 15) {
             evt.consume();
@@ -1027,6 +1135,10 @@ public class Tela_Produto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rbnCodigoActionPerformed
 
+    /**
+     * Faz a alteração dos produtos
+     * @param evt 
+     */
     private void btnAlterarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarProdActionPerformed
         alterarProduto();
         ListarTabela();
@@ -1050,6 +1162,10 @@ public class Tela_Produto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPcCompraActionPerformed
 
+    /**
+     * Chama a tela principal
+     * @param evt 
+     */
     private void mnuTelaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuTelaPrincipalActionPerformed
        Tela_principal principal = new Tela_principal();
        principal.setVisible(true);
@@ -1148,7 +1264,12 @@ public class Tela_Produto extends javax.swing.JFrame {
     private javax.swing.JTextField txtPcCompra;
     private javax.swing.JTextField txtQuantidade;
     // End of variables declaration//GEN-END:variables
-public void ListarTabela() {
+
+    /**
+     * Mostra uma lista de produtos
+     * @param evt 
+     */
+    public void ListarTabela() {
 
         DefaultTableModel Modelo = (DefaultTableModel) tblProduto.getModel();
         Modelo.setNumRows(0);
@@ -1171,6 +1292,10 @@ public void ListarTabela() {
         }
     }
 
+    /**
+     * Oculta os campos selecionados da tabela Produto
+     * @param evt 
+     */
     public void OcultarCampos() {
         tblProduto.getColumnModel().getColumn(5).setMinWidth(0);
         tblProduto.getColumnModel().getColumn(5).setMaxWidth(0);
@@ -1187,6 +1312,10 @@ public void ListarTabela() {
 
     }
 
+    /**
+     * Pega os dados para fazer a alteração dos produtos
+     * @param evt 
+     */
     private void alterarProduto() {
 
         try {
@@ -1224,6 +1353,10 @@ public void ListarTabela() {
         }
     }
 
+    /**
+     * Faz a busca dos produtos pelo Nome
+     * @param evt 
+     */
     public void BuscaNomeProd(String Busca) {
         DefaultTableModel Modelo = (DefaultTableModel) tblProduto.getModel();
         Modelo.setNumRows(0);
@@ -1246,6 +1379,10 @@ public void ListarTabela() {
         }
     }
 
+    /**
+     * Faz a busca dos produtos pelo Cod
+     * @param evt 
+     */
     public void BuscaCodProd(String Busca) {
         DefaultTableModel Modelo = (DefaultTableModel) tblProduto.getModel();
         Modelo.setNumRows(0);
@@ -1268,6 +1405,10 @@ public void ListarTabela() {
         }
     }
 
+    /**
+     * Limpa os campos
+     * @param evt 
+     */
     public void limparCamposP() {
         txtNome.setText("");
         txtMarca.setText("");
