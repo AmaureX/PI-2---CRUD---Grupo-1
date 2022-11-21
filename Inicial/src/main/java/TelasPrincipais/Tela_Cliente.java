@@ -1,7 +1,7 @@
 package TelasPrincipais;
 
 import DAO.ClienteDAO;
-import com.mysql.cj.xdevapi.Client;
+import Tela_Relatorio.TelaRelatorioSintetico;
 import java.awt.Color;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -91,7 +91,8 @@ public class Tela_Cliente extends javax.swing.JFrame {
         mnuVenda = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         mnuSintetico = new javax.swing.JMenuItem();
-        mnuAnalitico = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        mnuTelaPrincipal = new javax.swing.JMenuItem();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -100,17 +101,12 @@ public class Tela_Cliente extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jList1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel1.setText("Buscar cliente:");
 
-        txtBusca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBuscaActionPerformed(evt);
-            }
-        });
         txtBusca.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtBuscaKeyTyped(evt);
@@ -120,19 +116,9 @@ public class Tela_Cliente extends javax.swing.JFrame {
         bgEscolhaBusca.add(rbNome);
         rbNome.setSelected(true);
         rbNome.setText("Nome");
-        rbNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbNomeActionPerformed(evt);
-            }
-        });
 
         bgEscolhaBusca.add(rbCPF);
         rbCPF.setText("CPF");
-        rbCPF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbCPFActionPerformed(evt);
-            }
-        });
 
         btProcurar.setText("Procurar");
         btProcurar.addActionListener(new java.awt.event.ActionListener() {
@@ -316,11 +302,6 @@ public class Tela_Cliente extends javax.swing.JFrame {
         lblBairro.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblBairro.setText("Bairro:");
 
-        txtBairro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBairroActionPerformed(evt);
-            }
-        });
         txtBairro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtBairroKeyTyped(evt);
@@ -557,15 +538,19 @@ public class Tela_Cliente extends javax.swing.JFrame {
         });
         jMenu4.add(mnuSintetico);
 
-        mnuAnalitico.setText("Análitico");
-        mnuAnalitico.addActionListener(new java.awt.event.ActionListener() {
+        jMenuBar1.add(jMenu4);
+
+        jMenu2.setText("Principal");
+
+        mnuTelaPrincipal.setText("Tela Principal");
+        mnuTelaPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuAnaliticoActionPerformed(evt);
+                mnuTelaPrincipalActionPerformed(evt);
             }
         });
-        jMenu4.add(mnuAnalitico);
+        jMenu2.add(mnuTelaPrincipal);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -713,6 +698,7 @@ public class Tela_Cliente extends javax.swing.JFrame {
     private void btNovoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoCadastroActionPerformed
         jTabbedPane1.setEnabledAt(1, true);
         jTabbedPane1.setSelectedIndex(1);
+        btnAlterarCliente.setEnabled(false);
     }//GEN-LAST:event_btNovoCadastroActionPerformed
 
     private void txtLogradouroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLogradouroKeyTyped
@@ -776,16 +762,13 @@ public class Tela_Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuVendaActionPerformed
 
     private void mnuSinteticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuSinteticoActionPerformed
-        // TODO add your handling code here:
+        Tela_Relatorio.TelaRelatorioSintetico relatorio = new TelaRelatorioSintetico();
+        relatorio.setVisible(true);
     }//GEN-LAST:event_mnuSinteticoActionPerformed
-
-    private void mnuAnaliticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAnaliticoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mnuAnaliticoActionPerformed
 
     private void BtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAlterarActionPerformed
         int LinhaSelecionada = Tabela_Cliente.getSelectedRow();
-
+        btnAlterarCliente.setEnabled(true);
         try {
             txtCPF.setText(Tabela_Cliente.getModel().getValueAt(LinhaSelecionada, 0).toString());
             txtNomeCliente.setText(Tabela_Cliente.getModel().getValueAt(LinhaSelecionada, 1).toString());
@@ -797,7 +780,7 @@ public class Tela_Cliente extends javax.swing.JFrame {
             txtBairro.setText(Tabela_Cliente.getModel().getValueAt(LinhaSelecionada, 8).toString());
             txtCEP.setText(Tabela_Cliente.getModel().getValueAt(LinhaSelecionada, 9).toString());
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, "Selecione a Linha ");
         }
         try {
             Date data = new SimpleDateFormat("yyyy-MM-dd").parse((String) Tabela_Cliente.getValueAt(LinhaSelecionada, 4));
@@ -821,27 +804,16 @@ public class Tela_Cliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtBairroKeyTyped
 
-    private void txtBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBairroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBairroActionPerformed
-
     private void btnAlterarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarClienteActionPerformed
         alterarCliente();
         ListarTabela();
         limparCampos();
     }//GEN-LAST:event_btnAlterarClienteActionPerformed
 
-    private void txtBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBuscaActionPerformed
-
-    private void rbCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCPFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbCPFActionPerformed
-
-    private void rbNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbNomeActionPerformed
+    private void mnuTelaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuTelaPrincipalActionPerformed
+        Tela_principal principal = new Tela_principal();
+        principal.setVisible(true);
+    }//GEN-LAST:event_mnuTelaPrincipalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -898,6 +870,7 @@ public class Tela_Cliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JList<String> jList1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
@@ -917,9 +890,9 @@ public class Tela_Cliente extends javax.swing.JFrame {
     private javax.swing.JLabel lblEstadoCivil;
     private javax.swing.JLabel lblGenero;
     private javax.swing.JLabel lblNome;
-    private javax.swing.JMenuItem mnuAnalitico;
     private javax.swing.JMenuItem mnuProduto;
     private javax.swing.JMenuItem mnuSintetico;
+    private javax.swing.JMenuItem mnuTelaPrincipal;
     private javax.swing.JMenuItem mnuVenda;
     private javax.swing.JRadioButton rbCPF;
     private javax.swing.JRadioButton rbNome;
