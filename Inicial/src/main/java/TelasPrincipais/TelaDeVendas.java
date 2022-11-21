@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Pagamento;
+import model.Produto;
 import model.Vendas;
 
 /**
@@ -562,8 +563,19 @@ public class TelaDeVendas extends javax.swing.JFrame {
         if (txtCodProd.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(this, "Digite o código do produto para busca-lo");
         }
-        limpaCampos();
-        txtCodProd.getText();
+        try {
+            int cod = Integer.parseInt(txtCodProd.getText());
+            VendasDAO v = new VendasDAO();
+
+            Produto busca = (v.PesquisarProdutoCod(cod));
+
+            txtNomeProd.setText(busca.getNome());
+            txtValorUnit.setText(String.valueOf(busca.getPcVenda()));
+
+        } catch (NumberFormatException e) {
+
+        }
+        
     }//GEN-LAST:event_btnBuscaActionPerformed
 
     private void mnuprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuprodutoActionPerformed

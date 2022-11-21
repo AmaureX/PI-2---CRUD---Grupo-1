@@ -5,27 +5,25 @@ import java.util.Date;
 
 public class Produto {
 
-    private int idCod;
+    private String idCod;
     private String nome;
-    private int quantidade;
-    private double pcCompra;
-    private double pcVenda;
+    private String quantidade;
+    private String pcCompra;
+    private String pcVenda;
     private String fornecedor;
     private String marca;
-    private int lucro;
+    private String lucro;
     private String secao;
     private Date dataRecebimento;
 
     public Produto() {
     }
 
-  
-
-    public int getIdCod() {
+    public String getIdCod() {
         return idCod;
     }
 
-    public void setIdCod(int idCod) {
+    public void setIdCod(String idCod) {
         this.idCod = idCod;
     }
 
@@ -37,27 +35,27 @@ public class Produto {
         this.nome = nome;
     }
 
-    public int getQuantidade() {
+    public String getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(String quantidade) {
         this.quantidade = quantidade;
     }
 
-    public double getPcCompra() {
+    public String getPcCompra() {
         return pcCompra;
     }
 
-    public void setPcCompra(double pcCompra) {
+    public void setPcCompra(String pcCompra) {
         this.pcCompra = pcCompra;
     }
 
-    public double getPcVenda() {
+    public String getPcVenda() {
         return pcVenda;
     }
 
-    public void setPcVenda(double pcVenda) {
+    public void setPcVenda(String pcVenda) {
         this.pcVenda = pcVenda;
     }
 
@@ -77,11 +75,11 @@ public class Produto {
         this.marca = marca;
     }
 
-    public int getLucro() {
+    public String getLucro() {
         return lucro;
     }
 
-    public void setLucro(int lucro) {
+    public void setLucro(String lucro) {
         this.lucro = lucro;
     }
 
@@ -100,15 +98,6 @@ public class Produto {
     public void setDataRecebimento(Date dataRecebimento) {
         this.dataRecebimento = dataRecebimento;
     }
-
-    public void setIdCod(int i, int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
- 
-
-    
-        
     
 
 }

@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import model.Pagamento;
+import model.Produto;
 import model.Vendas;
 
 /**
@@ -20,7 +21,7 @@ import model.Vendas;
  */
 public class VendasDAO {
 
-    static String URL = "jdbc:mysql://localhost:3306/teste";
+    static String URL = "jdbc:mysql://localhost:3306/Perfumaria_encantus";
     static String login = "root";
     static String senha = "root";
 
@@ -45,7 +46,6 @@ public class VendasDAO {
                 if (linhasAfetadasItem > 0) {
 
                     retorno = true;
-
                 }
             }
 
@@ -54,4 +54,32 @@ public class VendasDAO {
         }
         return retorno;
     }
+    
+    
+    public Produto PesquisarProdutoCod(int cod) {
+        
+        try { Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection Conexao = DriverManager.getConnection(URL, login, senha);
+
+            PreparedStatement ComandoSQL = Conexao.prepareStatement(("SELECT * FROM produtos WHERE codigo = ?"), 
+                    ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            
+            Produto p = new Produto();
+            ComandoSQL.setInt(1, cod);
+            ResultSet rs = ComandoSQL.executeQuery();
+            
+            rs.first();
+            p.setIdCod(rs.getString("codigo"));
+            p.setNome(rs.getString("nome_produto"));
+            p.setPcVenda(rs.getString("preco_venda"));
+            
+            return p;
+        } catch (ClassNotFoundException | SQLException erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        }
+return null;
+    }
+    
+    
+    
 }

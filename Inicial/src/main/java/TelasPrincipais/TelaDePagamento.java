@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import model.Cliente;
 import model.Pagamento;
 import model.Vendas;
 
@@ -591,7 +592,24 @@ public class TelaDePagamento extends javax.swing.JFrame {
     }//GEN-LAST:event_txtJurosActionPerformed
 
     private void btnBuscarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCliActionPerformed
+
         // TODO add your handling code here:
+        
+        if(txtCpfCliente.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(this, "Digite o CPF do cliente.");
+        }
+        try{
+            String cod = txtCpfCliente.getText();
+            PagamentoDAO pagamentodao = new PagamentoDAO();
+            
+            Cliente Busca = (pagamentodao.PesquisarCPF(cod));
+            
+            txtCliente.setText(Busca.getNome());
+            
+        }catch(NumberFormatException e){
+            
+        }
+        
     }//GEN-LAST:event_btnBuscarCliActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed

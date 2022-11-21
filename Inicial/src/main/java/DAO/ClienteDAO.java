@@ -22,7 +22,7 @@ import model.Cliente;
  */
 public class ClienteDAO {
 
-    static String URL = "jdbc:mysql://localhost:3306/teste";
+    static String URL = "jdbc:mysql://localhost:3306/Perfumaria_encantus";
     static String Login = "root";
     static String Senha = "root";//Mude quando voce fazer a porra do pull!
 

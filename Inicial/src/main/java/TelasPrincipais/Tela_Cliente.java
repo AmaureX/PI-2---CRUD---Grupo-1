@@ -106,6 +106,11 @@ public class Tela_Cliente extends javax.swing.JFrame {
 
         jLabel1.setText("Buscar cliente:");
 
+        txtBusca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscaActionPerformed(evt);
+            }
+        });
         txtBusca.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtBuscaKeyTyped(evt);
@@ -115,9 +120,19 @@ public class Tela_Cliente extends javax.swing.JFrame {
         bgEscolhaBusca.add(rbNome);
         rbNome.setSelected(true);
         rbNome.setText("Nome");
+        rbNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbNomeActionPerformed(evt);
+            }
+        });
 
         bgEscolhaBusca.add(rbCPF);
         rbCPF.setText("CPF");
+        rbCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbCPFActionPerformed(evt);
+            }
+        });
 
         btProcurar.setText("Procurar");
         btProcurar.addActionListener(new java.awt.event.ActionListener() {
@@ -816,6 +831,18 @@ public class Tela_Cliente extends javax.swing.JFrame {
         limparCampos();
     }//GEN-LAST:event_btnAlterarClienteActionPerformed
 
+    private void txtBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscaActionPerformed
+
+    private void rbCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCPFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbCPFActionPerformed
+
+    private void rbNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbNomeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1010,6 +1037,7 @@ public class Tela_Cliente extends javax.swing.JFrame {
         String Email = txtEmail.getText();
 
         Cliente objCliente = new Cliente();
+        
         objCliente.setNome(Nome_cliente);
         objCliente.setCPF(CPF);
         objCliente.setDataNascimento(DataNascimento);
