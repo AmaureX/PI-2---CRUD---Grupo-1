@@ -5,6 +5,7 @@
 package Tela_Relatorio;
 
 import DAO.PagamentoDAO;
+import DAO.VendasDAO;
 import java.util.Date;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -18,9 +19,9 @@ public class TelaRelatorioSintetico extends javax.swing.JFrame {
     
     private void preenchetabela(){
             
-            PagamentoDAO pagamentoDAO = new PagamentoDAO();
+            VendasDAO pagamentoDAO = new VendasDAO();
             Date datavenda = dtInicio.getDate() ;
-            List<Pagamento> listavenda = pagamentoDAO.getPagamento();
+            List<Vendas> listavenda = pagamentoDAO.getPagamento();
             
             DefaultTableModel tabelaPagamento = (DefaultTableModel) tblRelatorio.getModel();
             

@@ -4,6 +4,9 @@
  */
 package model;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 
 /**
  *
@@ -17,9 +20,25 @@ public class Vendas {
     private double valorTotal;
     private int codProduto;
     private String nomeProduto;
+    private String cpf;
+    private String nome;
+    private String tipo_pag;
+    private String parcelamento;
+    private double Final;
+    private Date dataVenda;
+
 
 
     public Vendas() {
+    }
+    private ArrayList<Vendas> listaItens = null;
+
+    public ArrayList<Vendas> getListaItens() {
+        return listaItens;
+    }
+
+    public void setListaItens(ArrayList<Vendas> listaItens) {
+        this.listaItens = listaItens;
     }
 
     public int getCodVenda() {
@@ -69,7 +88,57 @@ public class Vendas {
 
     public void setNomeProduto(String nomeProduto) {
         this.nomeProduto = nomeProduto;
+    }     
+
+    public String getCpf() {
+        return cpf;
     }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getTipo_pag() {
+        return tipo_pag;
+    }
+
+    public void setTipo_pag(String tipo_pag) {
+        this.tipo_pag = tipo_pag;
+    }
+
+    public String getParcelamento() {
+        return parcelamento;
+    }
+
+    public void setParcelamento(String parcelamento) {
+        this.parcelamento = parcelamento;
+    }
+
+    public double getFinal() {
+        return Final;
+    }
+
+    public void setFinal(double Final) {
+        this.Final = Final;
+    }
+
+    public Date getDataVenda() {
+        return dataVenda;
+    }
+
+    public void setDataVenda(Date dataVenda) {
+        this.dataVenda = dataVenda;
+    }
+    
+    
     }
 
   
