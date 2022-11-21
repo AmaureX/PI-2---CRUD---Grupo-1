@@ -5,6 +5,10 @@
 package Tela_Relatorio;
 
 import DAO.RelatorioDAO;
+import TelasPrincipais.TelaDeVendas;
+import TelasPrincipais.Tela_Cliente;
+import TelasPrincipais.Tela_Produto;
+import TelasPrincipais.Tela_principal;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import model.Relatorio;
@@ -42,6 +46,15 @@ public class TelaRelatorioSintetico extends javax.swing.JFrame {
         dtInicio = new com.toedter.calendar.JDateChooser();
         dtFim = new com.toedter.calendar.JDateChooser();
         btnBuscarRelatorio = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        mnuPrincipal = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        mnuCliente = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        mnuProduto = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        mnuVenda = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -109,7 +122,7 @@ public class TelaRelatorioSintetico extends javax.swing.JFrame {
                     .addComponent(btnBuscarRelatorio)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,13 +145,63 @@ public class TelaRelatorioSintetico extends javax.swing.JFrame {
                 .addComponent(btnBuscarRelatorio)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(67, 67, 67))
         );
+
+        jMenu1.setText("Principal");
+
+        mnuPrincipal.setText("Tela Principal");
+        mnuPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuPrincipalActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnuPrincipal);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Cliente ");
+
+        mnuCliente.setText("Tela de Cliente ");
+        mnuCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuClienteActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mnuCliente);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Produto ");
+
+        mnuProduto.setText("Tela de Produto");
+        mnuProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuProdutoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(mnuProduto);
+
+        jMenuBar1.add(jMenu3);
+
+        jMenu4.setText("Venda ");
+
+        mnuVenda.setText("Tela de Venda");
+        mnuVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuVendaActionPerformed(evt);
+            }
+        });
+        jMenu4.add(mnuVenda);
+
+        jMenuBar1.add(jMenu4);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -192,6 +255,26 @@ public class TelaRelatorioSintetico extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnBuscarRelatorioActionPerformed
+
+    private void mnuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuClienteActionPerformed
+       TelasPrincipais.Tela_Cliente Cliente = new Tela_Cliente();
+       Cliente.setVisible(true);
+    }//GEN-LAST:event_mnuClienteActionPerformed
+
+    private void mnuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuPrincipalActionPerformed
+        TelasPrincipais.Tela_principal Principal = new Tela_principal();
+       Principal.setVisible(true);
+    }//GEN-LAST:event_mnuPrincipalActionPerformed
+
+    private void mnuProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuProdutoActionPerformed
+        TelasPrincipais.Tela_Produto Produto = new Tela_Produto();
+       Produto.setVisible(true);
+    }//GEN-LAST:event_mnuProdutoActionPerformed
+
+    private void mnuVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuVendaActionPerformed
+        TelasPrincipais.TelaDeVendas Venda = new TelaDeVendas();
+        Venda.setVisible(true );
+    }//GEN-LAST:event_mnuVendaActionPerformed
     
     /**
      * Mostra o valor total
@@ -262,9 +345,18 @@ public class TelaRelatorioSintetico extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblValorTotal;
+    private javax.swing.JMenuItem mnuCliente;
+    private javax.swing.JMenuItem mnuPrincipal;
+    private javax.swing.JMenuItem mnuProduto;
+    private javax.swing.JMenuItem mnuVenda;
     private javax.swing.JTable tblRelatorio;
     // End of variables declaration//GEN-END:variables
 }
