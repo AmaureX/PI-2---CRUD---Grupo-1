@@ -4,46 +4,17 @@
  */
 package Tela_Relatorio;
 
-import DAO.PagamentoDAO;
-import DAO.VendasDAO;
-import java.util.Date;
-import java.util.List;
+import DAO.RelatorioDAO;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import model.Pagamento;
+import model.Relatorio;
 
 /**
  *
  * @author amaur
  */
 public class TelaRelatorioSintetico extends javax.swing.JFrame {
-    
-    private void preenchetabela(){
-            
-            VendasDAO pagamentoDAO = new VendasDAO();
-            Date datavenda = dtInicio.getDate() ;
-            List<Vendas> listavenda = pagamentoDAO.getPagamento();
-            
-            DefaultTableModel tabelaPagamento = (DefaultTableModel) tblRelatorio.getModel();
-            
-            tabelaPagamento.setNumRows(0);
-            
-            for(Pagamento p: listavenda){
-                
-                Object[] obj = new Object[]{
-                    p.getDataVenda(),
-                    p.getCpfCliente(),
-                    p.getValorFinal()
-                    };
-                tabelaPagamento.addRow(obj);
-                
-            }
-            
-               
-        }
-    
-    
-    
- 
+
     /**
      * Creates new form telaRelatorio
      */
@@ -122,14 +93,16 @@ public class TelaRelatorioSintetico extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
                 .addComponent(btnDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+                .addGap(56, 56, 56))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -157,24 +130,24 @@ public class TelaRelatorioSintetico extends javax.swing.JFrame {
                     .addComponent(dtFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnBuscarRelatorio)
-                .addGap(41, 41, 41)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(lblValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(67, 67, 67))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,10 +167,41 @@ public class TelaRelatorioSintetico extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDetalhesActionPerformed
 
     private void btnBuscarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarRelatorioActionPerformed
-        
-        preenchetabela();
-        
+        ArrayList<Relatorio> lista = RelatorioDAO.listar();
+
+        if (lista != null) {
+            DefaultTableModel modelo = (DefaultTableModel) tblRelatorio.getModel();
+            modelo.setRowCount(0);
+
+            for (Relatorio relatorio : lista) {
+                modelo.addRow(new String[]{
+                    String.valueOf(relatorio.getData()),
+                    String.valueOf(relatorio.getCliente()),
+                    String.valueOf(relatorio.getValor())
+                });
+            }
+        }
+
+
     }//GEN-LAST:event_btnBuscarRelatorioActionPerformed
+    private void Total(boolean status) {
+        double valorTotal = 0;
+        int cont = tblRelatorio.getRowCount();
+
+        if (status = true) {
+            for (int i = 0; i < cont; i++) {
+                valorTotal += Double.parseDouble(tblRelatorio.getValueAt(i, 4).toString());
+            }
+
+            lblValorTotal.setText(String.valueOf(valorTotal));
+        } else {
+            for (int i = 0; i < cont; i++) {
+                valorTotal -= Double.parseDouble(tblRelatorio.getValueAt(i, 4).toString());
+            }
+
+            lblValorTotal.setText(String.valueOf(valorTotal));
+        }
+    }
 
     /**
      * @param args the command line arguments

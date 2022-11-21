@@ -118,7 +118,6 @@ public class TelaDeVendas extends javax.swing.JFrame {
         mnuproduto = new javax.swing.JMenuItem();
         menuRelatorio = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -556,14 +555,6 @@ public class TelaDeVendas extends javax.swing.JFrame {
         jMenuItem3.setText("Sintético");
         menuRelatorio.add(jMenuItem3);
 
-        jMenuItem4.setText("Análitico");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        menuRelatorio.add(jMenuItem4);
-
         jMenuBar1.add(menuRelatorio);
 
         setJMenuBar(jMenuBar1);
@@ -774,10 +765,6 @@ public class TelaDeVendas extends javax.swing.JFrame {
         Produto.setVisible(true);
     }//GEN-LAST:event_mnuprodutoActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
     private void mnuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuClienteActionPerformed
         Tela_Cliente Cliente = new Tela_Cliente();
         Cliente.setVisible(true);
@@ -909,7 +896,6 @@ public class TelaDeVendas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
