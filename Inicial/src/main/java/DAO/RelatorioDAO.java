@@ -14,7 +14,7 @@ import model.Relatorio;
 
 public class RelatorioDAO {
 
-    public static String url = "jdbc:mysql://localhost:3301/Perfumaria_encantus";
+    public static String url = "jdbc:mysql://localhost:3306/Perfumaria_encantus";
     public static String login = "root";
     public static String senha = "root";
 
@@ -29,9 +29,9 @@ public class RelatorioDAO {
 
             conexao = DriverManager.getConnection(url, login, senha);
 
-            PreparedStatement comandoSQL = conexao.prepareStatement("SELECT pagamentos.data_venda as Data,"
-                    + " pagamentos.nome_cliente as Cliente,pagamentos.valor_final as Valor"
-                    + " FROM pagamentos INNER JOIN clientes ON pagamentos.nome_clinte = clintes.nome_cliente"
+            PreparedStatement comandoSQL = conexao.prepareStatement("SELECT vendas.data_venda as Data,"
+                    + " vendas.nome as Cliente, vendas.valor_final as Valor"
+                    + " FROM vendas INNER JOIN clientes ON vendas.nome = clientes.nome"
                     + "GROUP BY Data, Cliente, Valor;");
 
             ResultSet rs = comandoSQL.executeQuery();

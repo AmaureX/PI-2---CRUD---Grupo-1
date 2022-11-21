@@ -6,6 +6,9 @@ package DAO;
 
 import static DAO.ClienteDAO.Login;
 import static DAO.ClienteDAO.Senha;
+import static DAO.ProdutoDAO.login;
+import static DAO.ProdutoDAO.senha;
+import static DAO.ProdutoDAO.url;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -23,7 +26,7 @@ import model.Vendas;
  */
 public class VendasDAO {
 
-    static String URL = "jdbc:mysql://localhost:3306/teste";
+    static String URL = "jdbc:mysql://localhost:3306/Perfumaria_encantus";
     static String login = "root";
     static String senha = "root";
 
@@ -63,6 +66,7 @@ public class VendasDAO {
 
             }
 
+         JOptionPane.showMessageDialog(null, "Salvo com Sucesso!");
         } catch (ClassNotFoundException | SQLException erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
         }
@@ -117,5 +121,8 @@ public class VendasDAO {
         }
         return null;
     }
+    
+    
 
 }
+
