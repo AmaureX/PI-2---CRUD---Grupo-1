@@ -26,6 +26,7 @@ import model.Produto;
  */
 public class ProdutoDAO {
 
+
     public static String url = "jdbc:mysql://localhost:3306/Perfumaria_encantus";
     public static String login = "root";
     public static String senha = "root";
@@ -37,8 +38,8 @@ public class ProdutoDAO {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conexao = DriverManager.getConnection(url, login, senha);
             retorno = true;
-            PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO Produtos (nome_produto,marca, secao, quantidade, preco_compra, lucro, fornecedor,preco_venda, data_recebimento) VALUES (?,?,?,?,?,?,?,?,?)",
-                    Statement.RETURN_GENERATED_KEYS);
+
+            PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO Produtos (nome_produto,marca, secao, quantidade, preco_compra, lucro, fornecedor,preco_venda, data_recebimento) VALUES (?,?,?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
 
             comandoSQL.setString(1, obj.getNome());
             comandoSQL.setString(2, obj.getMarca());

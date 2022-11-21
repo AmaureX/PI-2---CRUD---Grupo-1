@@ -42,6 +42,7 @@ public class TelaDePagamento extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel4 = new javax.swing.JLabel();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         lblCpfCliente = new javax.swing.JLabel();
         lblCliente = new javax.swing.JLabel();
@@ -72,7 +73,7 @@ public class TelaDePagamento extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jdcDataVenda = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
-        lblCodVenda = new javax.swing.JLabel();
+        lblCodPag = new javax.swing.JLabel();
 
         jLabel4.setText("Quantidade de Parcelas:");
 
@@ -118,28 +119,32 @@ public class TelaDePagamento extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(lblCpfCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(lblCpfCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCpfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBuscarCli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(lblCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnBuscarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(9, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCpfCliente)
-                    .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarCli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtCpfCliente)
-                    .addComponent(lblCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(21, 21, 21))
+                    .addComponent(lblCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addComponent(btnBuscarCli, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -335,7 +340,7 @@ public class TelaDePagamento extends javax.swing.JFrame {
                 .addComponent(lblParcelas)
                 .addGap(62, 62, 62)
                 .addComponent(boxQntParcelas, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(358, Short.MAX_VALUE))
         );
         panelParcelamentoLayout.setVerticalGroup(
             panelParcelamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -356,11 +361,11 @@ public class TelaDePagamento extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Identificação da Venda")));
 
-        jLabel1.setText("Codigo da Venda: ");
+        jLabel1.setText("Codigo da Nota: ");
 
         jLabel2.setText("Data da Venda:");
 
-        lblCodVenda.setText("0");
+        lblCodPag.setText("0");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -372,7 +377,7 @@ public class TelaDePagamento extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblCodVenda))
+                        .addComponent(lblCodPag))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
@@ -385,7 +390,7 @@ public class TelaDePagamento extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(lblCodVenda))
+                    .addComponent(lblCodPag))
                 .addGap(16, 16, 16)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
@@ -401,42 +406,42 @@ public class TelaDePagamento extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(panelParcelamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(panelParcelamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(81, 81, 81)
-                                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(156, 156, 156)
-                                .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(81, 81, 81)
+                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(156, 156, 156)
+                        .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelParcelamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(77, 77, 77)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -486,103 +491,101 @@ public class TelaDePagamento extends javax.swing.JFrame {
             return;
         }
         try {
-        double valorFinal = Double.parseDouble(txtValorFinal.getText());
-        double valorRecebido = Double.parseDouble(txtValorRecebido.getText());
+            double valorFinal = Double.parseDouble(txtValorFinal.getText());
+            double valorRecebido = Double.parseDouble(txtValorRecebido.getText());
 
-        if (valorRecebido < valorFinal) {
-            JOptionPane.showMessageDialog(this, "O valor recebido é menor que o valor final da compra");
-            return;
+            if (valorRecebido < valorFinal) {
+                JOptionPane.showMessageDialog(this, "O valor recebido é menor que o valor final da compra");
+                return;
+            }
+        } catch (NumberFormatException e) {
+
         }
-        }catch (NumberFormatException e) {
-            
-        }
-            
+
         try {
-        int cod = Integer.parseInt(lblCodVenda.getText());
-        Date data = jdcDataVenda.getDate();
-        String nome = txtCliente.getText();
-        String cpf = txtCpfCliente.getText().replace(".", "").replace(".", "").replace("-","");
-        String tipoPag = boxTipoPag.getSelectedItem().toString();
-        String parcelamento = boxQntParcelas.getSelectedItem().toString();
-        double subtotal = Double.parseDouble(txtValorTotal.getText());
-        double desconto = Double.parseDouble(txtDesconto.getText());
-        double juros = Double.parseDouble(txtJuros.getText());
-        double valorTotal = Double.parseDouble(txtValorFinal.getText());
-        double valorRec = Double.parseDouble(txtValorRecebido.getText());
-        double troco = Double.parseDouble(txtTroco.getText());
-        
-        
-        Pagamento objPagamento = new Pagamento();
-        
-        objPagamento.setCodVenda(cod);
-        //objPagamento.setDataVenda(data);
-        objPagamento.setNomeCliente(nome);
-        objPagamento.setCpfCliente(cpf);
-        objPagamento.setTipoPagamento(tipoPag);
-        objPagamento.setParcelamento(parcelamento);
-        objPagamento.setSubtotal(subtotal);
-        objPagamento.setDesconto(desconto);
-        objPagamento.setJuros(juros);
-        objPagamento.setValorFinal(valorTotal);
-        objPagamento.setValorRecebido(valorRec);
-        objPagamento.setTroco(troco);
-        
-         boolean retorno = PagamentoDAO.Salvar(objPagamento);
-         
-        if (retorno){
-            JOptionPane.showMessageDialog(this, "Nota gravada com sucesso!");
-        } else{
-            JOptionPane.showMessageDialog(this, "Falha na gravação!");
+            int cod = Integer.parseInt(lblCodPag.getText());
+            Date data = jdcDataVenda.getDate();
+            String nome = txtCliente.getText();
+            String cpf = txtCpfCliente.getText().replace(".", "").replace(".", "").replace("-", "");
+            String tipoPag = boxTipoPag.getSelectedItem().toString();
+            String parcelamento = boxQntParcelas.getSelectedItem().toString();
+            double subtotal = Double.parseDouble(txtValorTotal.getText());
+            double desconto = Double.parseDouble(txtDesconto.getText());
+            double juros = Double.parseDouble(txtJuros.getText());
+            double valorTotal = Double.parseDouble(txtValorFinal.getText());
+            double valorRec = Double.parseDouble(txtValorRecebido.getText());
+            double troco = Double.parseDouble(txtTroco.getText());
+
+            Pagamento objPagamento = new Pagamento();
+
+            objPagamento.setCodPag(cod);
+            objPagamento.setDataVenda(data);
+            objPagamento.setNomeCliente(nome);
+            objPagamento.setCpfCliente(cpf);
+            objPagamento.setTipoPagamento(tipoPag);
+            objPagamento.setParcelamento(parcelamento);
+            objPagamento.setSubtotal(subtotal);
+            objPagamento.setDesconto(desconto);
+            objPagamento.setJuros(juros);
+            objPagamento.setValorFinal(valorTotal);
+            objPagamento.setValorRecebido(valorRec);
+            objPagamento.setTroco(troco);
+
+            boolean retorno = PagamentoDAO.Salvar(objPagamento);
+
+            if (retorno) {
+                JOptionPane.showMessageDialog(this, "Nota gravada com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Falha na gravação!");
+            }
+        } catch (NumberFormatException e) {
+
         }
-        }catch (NumberFormatException e) {
-            
-        }
-       
+
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
     private void boxTipoPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxTipoPagActionPerformed
 
         try {
-        if (boxTipoPag.getSelectedItem().equals("Cartão de Crédito Parcelado")) {
-            boxQntParcelas.setEnabled(true);
+            if (boxTipoPag.getSelectedItem().equals("Cartão de Crédito Parcelado")) {
+                boxQntParcelas.setEnabled(true);
 
-        } else {
-            double juros = 0;
-            txtJuros.setText(String.valueOf(juros));
-            boxQntParcelas.setEnabled(false);
-        }
-        }catch (NumberFormatException e) {
-            
+            } else {
+                double juros = 0;
+                txtJuros.setText(String.valueOf(juros));
+                boxQntParcelas.setEnabled(false);
+            }
+        } catch (NumberFormatException e) {
+
         }
 
         if (boxTipoPag.getSelectedItem().equals("Dinheiro")) {
-            txtTroco.setEnabled(true);
+            txtTroco.setEditable(true);
 
         } else {
-            txtTroco.setEnabled(false);
+            txtTroco.setEditable(false);
+            txtTroco.setText("0.0");
         }
 
     }//GEN-LAST:event_boxTipoPagActionPerformed
 
     private void boxQntParcelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxQntParcelasActionPerformed
 
-        try{
-        if (boxQntParcelas.getSelectedItem().equals("4x")
-                || boxQntParcelas.getSelectedItem().equals("5x")
-                || boxQntParcelas.getSelectedItem().equals("6x")) {
+        try {
+            if (boxQntParcelas.getSelectedItem().equals("4x")
+                    || boxQntParcelas.getSelectedItem().equals("5x")
+                    || boxQntParcelas.getSelectedItem().equals("6x")) {
 
-            txtJuros.setEditable(false);
+                double valorTotal = Double.parseDouble(txtValorTotal.getText());
+                double juros = valorTotal * 0.05;
+                txtJuros.setText(String.valueOf(juros));
 
-            double valorTotal = Double.parseDouble(txtValorTotal.getText());
-            double juros = valorTotal * 0.05;
-            txtJuros.setText(String.valueOf(juros));
+            } else {
+                txtJuros.setEditable(false);
 
-        } else {
-            txtJuros.setEditable(false);
-
-        }
+            }
         } catch (NumberFormatException e) {
-            
+
         }
      }//GEN-LAST:event_boxQntParcelasActionPerformed
 
@@ -593,23 +596,14 @@ public class TelaDePagamento extends javax.swing.JFrame {
 
     private void btnBuscarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCliActionPerformed
 
-        // TODO add your handling code here:
+        String cpf = txtCpfCliente.getText().replace(".", "").replace(".", "").replace("-", "");
+
+        PagamentoDAO pg = new PagamentoDAO();
+      
+        Cliente busca = (pg.PesquisarCliente(cpf));
         
-        if(txtCpfCliente.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(this, "Digite o CPF do cliente.");
-        }
-        try{
-            String cod = txtCpfCliente.getText();
-            PagamentoDAO pagamentodao = new PagamentoDAO();
-            
-            Cliente Busca = (pagamentodao.PesquisarCPF(cod));
-            
-            txtCliente.setText(Busca.getNome());
-            
-        }catch(NumberFormatException e){
-            
-        }
-        
+        txtCliente.setText(busca.getNome());
+               
     }//GEN-LAST:event_btnBuscarCliActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
@@ -631,7 +625,7 @@ public class TelaDePagamento extends javax.swing.JFrame {
     private void txtDescontoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescontoKeyTyped
         char c = evt.getKeyChar();
         if ((c < '0' || c > '9') && (c != KeyEvent.VK_BACK_SPACE && c != KeyEvent.VK_DELETE
-                && c != KeyEvent.VK_ENTER && c != KeyEvent.VK_PERIOD )) {
+                && c != KeyEvent.VK_ENTER && c != KeyEvent.VK_PERIOD)) {
 
             evt.consume();
             JOptionPane.showMessageDialog(this, "Digite apenas números");
@@ -662,30 +656,30 @@ public class TelaDePagamento extends javax.swing.JFrame {
     }//GEN-LAST:event_txtValorRecebidoMouseClicked
 
     private void txtValorFinalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtValorFinalMouseClicked
-       try {
-        double subtotal = Double.parseDouble(txtValorTotal.getText());
-        double desconto = Double.parseDouble(txtDesconto.getText());
-        double juros = Double.parseDouble(txtJuros.getText());
-        String valorFinal = String.valueOf(subtotal - desconto + juros);
-        txtDesconto.setText(String.valueOf(desconto));
-        txtValorFinal.setText(valorFinal);
+        try {
+            double subtotal = Double.parseDouble(txtValorTotal.getText());
+            double desconto = Double.parseDouble(txtDesconto.getText());
+            double juros = Double.parseDouble(txtJuros.getText());
+            String valorFinal = String.valueOf(subtotal - desconto + juros);
+            txtDesconto.setText(String.valueOf(desconto));
+            txtValorFinal.setText(valorFinal);
 
-       } catch (NumberFormatException e) {
-           
-       }
+        } catch (NumberFormatException e) {
+
+        }
     }//GEN-LAST:event_txtValorFinalMouseClicked
 
     private void txtTrocoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTrocoMouseClicked
-       try{
-        if (boxTipoPag.getSelectedItem().equals("Dinheiro")) {
-            double valorRec = Double.parseDouble(txtValorRecebido.getText());
-            double valorFinal = Double.parseDouble(txtValorFinal.getText());
-            String troco = String.valueOf(valorRec - valorFinal);
-            txtTroco.setText(troco);
+        try {
+            if (boxTipoPag.getSelectedItem().equals("Dinheiro")) {
+                double valorRec = Double.parseDouble(txtValorRecebido.getText());
+                double valorFinal = Double.parseDouble(txtValorFinal.getText());
+                String troco = String.valueOf(valorRec - valorFinal);
+                txtTroco.setText(troco);
+            }
+        } catch (NumberFormatException e) {
+
         }
-       } catch (NumberFormatException e) {
-           
-       }
     }//GEN-LAST:event_txtTrocoMouseClicked
 
     /**
@@ -732,6 +726,7 @@ public class TelaDePagamento extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscarCli;
     private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton btnVoltar;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -741,7 +736,7 @@ public class TelaDePagamento extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private com.toedter.calendar.JDateChooser jdcDataVenda;
     private javax.swing.JLabel lblCliente;
-    private javax.swing.JLabel lblCodVenda;
+    private javax.swing.JLabel lblCodPag;
     private javax.swing.JLabel lblCpfCliente;
     private javax.swing.JLabel lblDesconto;
     private javax.swing.JLabel lblJuros;

@@ -11,6 +11,7 @@ package model;
  */
 public class Vendas {
 
+    private int codVenda;
     private int quantidade;
     private double valorUnitario;
     private double valorTotal;
@@ -21,6 +22,15 @@ public class Vendas {
     public Vendas() {
     }
 
+    public int getCodVenda() {
+        return codVenda;
+    }
+
+    public void setCodVenda(int codVenda) {
+        this.codVenda = codVenda;
+    }
+
+    
     public int getQuantidade() {
         return quantidade;
     }

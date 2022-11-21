@@ -77,6 +77,8 @@ public class TelaDeVendas extends javax.swing.JFrame {
         btnConcluir = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lblCodVenda = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lblCodProd = new javax.swing.JLabel();
         txtCodProd = new javax.swing.JTextField();
@@ -149,6 +151,10 @@ public class TelaDeVendas extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Cod Venda: ");
+
+        lblCodVenda.setText("0");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -160,9 +166,17 @@ public class TelaDeVendas extends javax.swing.JFrame {
                 .addComponent(btnConcluir)
                 .addGap(18, 18, 18)
                 .addComponent(btnCancelar)
-                .addGap(87, 87, 87)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCodVenda)
+                        .addGap(137, 137, 137))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,6 +188,12 @@ public class TelaDeVendas extends javax.swing.JFrame {
                     .addComponent(btnCancelar)
                     .addComponent(jLabel1))
                 .addContainerGap(19, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(lblCodVenda))
+                .addContainerGap())
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -448,6 +468,8 @@ public class TelaDeVendas extends javax.swing.JFrame {
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         habilitarCampos(true);
         limpaCampos();
+
+
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -477,10 +499,14 @@ public class TelaDeVendas extends javax.swing.JFrame {
             }
         }
 
+        int cod = Integer.parseInt(lblCodVenda.getText());
         Pagamento objPagamento = new Pagamento();
+
         objPagamento.setListaItens(listaItens);
+        objPagamento.setCodVenda(cod);
 
         boolean retorno = VendasDAO.Salvar(objPagamento);
+
         if (retorno) {
             JOptionPane.showMessageDialog(this, "Nota gravada com sucesso!");
         } else {
@@ -563,19 +589,21 @@ public class TelaDeVendas extends javax.swing.JFrame {
         if (txtCodProd.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(this, "Digite o código do produto para busca-lo");
         }
+
         try {
             int cod = Integer.parseInt(txtCodProd.getText());
+
             VendasDAO v = new VendasDAO();
 
             Produto busca = (v.PesquisarProdutoCod(cod));
 
             txtNomeProd.setText(busca.getNome());
             txtValorUnit.setText(String.valueOf(busca.getPcVenda()));
-
         } catch (NumberFormatException e) {
 
         }
-        
+
+
     }//GEN-LAST:event_btnBuscaActionPerformed
 
     private void mnuprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuprodutoActionPerformed
@@ -667,6 +695,7 @@ public class TelaDeVendas extends javax.swing.JFrame {
     private javax.swing.JButton btnExcluirItem;
     private javax.swing.JButton btnIniciar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -678,6 +707,7 @@ public class TelaDeVendas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblCodProd;
+    private javax.swing.JLabel lblCodVenda;
     private javax.swing.JLabel lblNomeProd;
     private javax.swing.JLabel lblQnt;
     private javax.swing.JLabel lblValor;
@@ -694,4 +724,8 @@ public class TelaDeVendas extends javax.swing.JFrame {
     private javax.swing.JTextField txtQnt;
     private javax.swing.JTextField txtValorUnit;
     // End of variables declaration//GEN-END:variables
+
+    private int setCodVenda(int parseInt) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

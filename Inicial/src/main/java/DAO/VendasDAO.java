@@ -4,6 +4,9 @@
  */
 package DAO;
 
+import static DAO.ClienteDAO.Login;
+import static DAO.ClienteDAO.Senha;
+import static DAO.PagamentoDAO.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -27,23 +30,30 @@ public class VendasDAO {
 
     public static boolean Salvar(Pagamento obj) {
         boolean retorno = false;
+        Integer generatedID = null;
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conexao = DriverManager.getConnection(URL, login, senha);
 
             for (Vendas item : obj.getListaItens()) {
-                PreparedStatement ComandoSQLItem = conexao.prepareStatement("INSERT INTO vendas (cod_produto,"
-                        + "nome_produto, quantidade, valor_unitario, valor_total) VALUES (?,?,?,?,?)");
-                ComandoSQLItem.setInt(1, item.getCodProduto());
-                ComandoSQLItem.setString(2, item.getNomeProduto());
-                ComandoSQLItem.setInt(3, item.getQuantidade());
+
+                PreparedStatement ComandoSQLItem;
+                ComandoSQLItem = conexao.prepareStatement("INSERT INTO vendas (quantidade,"
+                        + "cod_produto, nome_produto, valor_unitario, valor_total) VALUES (?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+                ComandoSQLItem.setInt(1, item.getQuantidade());
+                ComandoSQLItem.setInt(2, item.getCodProduto());
+                ComandoSQLItem.setString(3, item.getNomeProduto());
                 ComandoSQLItem.setDouble(4, item.getValorUnitario());
                 ComandoSQLItem.setDouble(5, item.getValorTotal());
 
                 int linhasAfetadasItem = ComandoSQLItem.executeUpdate();
 
                 if (linhasAfetadasItem > 0) {
+                    ResultSet rs = ComandoSQLItem.getGeneratedKeys();
+                    if (rs.next()) {
+                        generatedID = rs.getInt(1);
+                    }
 
                     retorno = true;
                 }
@@ -54,32 +64,29 @@ public class VendasDAO {
         }
         return retorno;
     }
-    
-    
+
     public Produto PesquisarProdutoCod(int cod) {
-        
-        try { Class.forName("com.mysql.cj.jdbc.Driver");
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection Conexao = DriverManager.getConnection(URL, login, senha);
 
-            PreparedStatement ComandoSQL = Conexao.prepareStatement(("SELECT * FROM produtos WHERE codigo = ?"), 
+            PreparedStatement ComandoSQL = Conexao.prepareStatement(("SELECT * FROM produtos WHERE codigo = ?"),
                     ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            
+
             Produto p = new Produto();
             ComandoSQL.setInt(1, cod);
             ResultSet rs = ComandoSQL.executeQuery();
-            
+
             rs.first();
             p.setIdCod(rs.getString("codigo"));
             p.setNome(rs.getString("nome_produto"));
             p.setPcVenda(rs.getString("preco_venda"));
-            
+
             return p;
         } catch (ClassNotFoundException | SQLException erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
         }
-return null;
+        return null;
     }
-    
-    
-    
 }

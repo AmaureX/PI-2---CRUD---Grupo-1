@@ -14,6 +14,7 @@ import java.util.Date;
 public class Pagamento {
     
     private String cpfCliente;
+    private int codPag;
     private int codVenda;
     private String nomeCliente;
     private String tipoPagamento;
@@ -93,12 +94,12 @@ public class Pagamento {
         this.juros = juros;
     }  
 
-    public int getCodVenda() {
-        return codVenda;
+    public int getCodPag() {
+        return codPag;
     }
 
-    public void setCodVenda(int codVenda) {
-        this.codVenda = codVenda;
+    public void setCodPag(int codPag) {
+        this.codPag = codPag;
     }
 
     public ArrayList<Vendas> getListaItens() {
@@ -132,6 +133,16 @@ public class Pagamento {
     public void setTroco(double troco) {
         this.troco = troco;
     }
+
+    public int getCodVenda() {
+        return codVenda;
+    }
+
+    public void setCodVenda(int codVenda) {
+        this.codVenda = codVenda;
+    }
+    
+    
     
        
 }
